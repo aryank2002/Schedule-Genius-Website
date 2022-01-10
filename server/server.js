@@ -33,9 +33,9 @@ const socketManager = require("./server-socket");
 
 // Server configuration below
 // TODO change connection URL after setting up your team database
-const mongoConnectionURL = "FILL ME IN";
+const mongoConnectionURL = "mongodb+srv://rwxhuang:Hello2!@2022-weblab-idea-ots.bxmph.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 // TODO change database name to the name you chose
-const databaseName = "FILL ME IN";
+const databaseName = "Weblab-2022-Idea-ots";
 
 // connect to mongodb
 mongoose
