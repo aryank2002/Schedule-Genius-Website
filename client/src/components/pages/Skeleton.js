@@ -53,6 +53,14 @@ const Skeleton = (props) => {
           </p>
         </section>
       </div>
+      <div class="footer-basic">
+        <footer>
+            <ul class="list-inline">
+                <li class="list-inline-item">Created by Aryan Kumar and Roderick Huang</li>
+            </ul>
+            <p class="copyright">ScheduleGenius © 2022</p>
+        </footer>
+      </div>
     </>
   );
 };
