@@ -10,8 +10,17 @@ const Skeleton = (props) => {
   return (
     <>
       <div className="home_container" >
-        <h1 className="front_text_style">The schedule</h1>
-        <h1 className="front_text_style">designed for you.</h1>
+      <div class="animated-title">
+        <div class="text-top">
+          <div>
+            <span>The schedule</span>
+            <span>designed</span>
+          </div>
+        </div>
+        <div class="text-bottom">
+          <div>just for you!</div>
+        </div>
+      </div>
       </div>
       <div className="button_container">
       <button type="button" className = "home_button">Make a schedule</button>

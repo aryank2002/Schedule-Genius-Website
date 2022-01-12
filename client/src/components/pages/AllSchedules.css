@@ -6,12 +6,26 @@
   margin-top: 40px;
 }
 
+.schedule_flex {
+  display: flex;
+}
+
+.sub_container {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.sub_container + .sub_container {
+  margin-left: var(--m);
+}
+
 .schedules_container {
   background-color: #495590;
+  box-shadow: 10px 10px 8px #888888;
   height: 600px;
-  width: 500px;
+  width: 550px;
   margin-left: 60px;
-  border-radius: 25px;
+  border-radius: var(--m);
   padding: 20px;
   display: block;
   border: 0px solid red;
@@ -27,6 +41,8 @@
 ::-webkit-scrollbar-track {
   background: gainsboro;
   border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 /* Handle */
@@ -38,4 +54,28 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: var(--copper_rust);
+}
+
+.schedule_button,
+.schedule_button:visited {
+  font-size: 25px;
+  font-family: "montserrat";
+  color: var(--dark_copper_rust);
+  padding: var(--m);
+  border-radius: 16px;
+  background-color: var(--primary);
+  cursor: pointer;
+  width: 50%;
+  margin-top: 50px;
+  margin-left: 200px;
+  transition: all 0.3s ease-in;
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in;
+  transition-delay: 0s;
+}
+
+.schedule_button:hover {
+  color: var(--dark_copper_rust);
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
