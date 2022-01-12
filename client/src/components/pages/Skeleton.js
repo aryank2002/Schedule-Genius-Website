@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
+import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
 
 import "../../utilities.css";
 import "./Skeleton.css";
 
 const Skeleton = (props) => {
+
   return (
     <>
       <div className="home_container" >
