@@ -5,13 +5,14 @@
   background-size: cover;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  padding-top: 150px;
+  padding-top: 50px;
   padding-bottom: 40px;
 }
 
 .front_text_style {
   font-size: 80pt;
   text-align: center;
+  font-weight: 400;
   padding-top: 0px;
   color: var(--dark_copper_rust);
 }
