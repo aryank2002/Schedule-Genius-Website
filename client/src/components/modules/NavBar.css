@@ -1,0 +1,54 @@
+.NavBar-container {
+  padding: var(--s) var(--m);
+  background-color: var(--primary);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 0 6px rgbal(0, 0, 0, 0.8);
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 98.5%;
+}
+
+.NavBar-title {
+  color: var(--dark_copper_rust);
+  font-size: 25px;
+}
+
+.NavBar-linkContainer {
+  margin-left: var(--l);
+}
+
+.NavBar-link,
+.NavBar-link:visited {
+  color: var(--copper_rust);
+  font-weight: 400;
+  text-decoration: none;
+  transition: all 0.3s ease-in;
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in;
+  transition-delay: 0s;
+}
+
+.NavBar-link:hover {
+  opacity: 0.8;
+}
+
+.NavBar-link.NavBar-login {
+  opacity: 1;
+}
+
+.NavBar-link + .NavBar-link {
+  margin-left: var(--m);
+}
+
+.NavBar-logo {
+  width: fit-content;
+  height: fit-content;
+  margin-top: 10;
+  margin-bottom: -15px;
+  margin-right: var(--m);
+}

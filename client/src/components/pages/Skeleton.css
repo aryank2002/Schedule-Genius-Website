@@ -1,1 +1,92 @@
-/* Fill me in :) */
+.home_container {
+  background-image: url(https://docs.google.com/drawings/d/e/2PACX-1vQFeJEyoWu36oqhKqfmiCr3quztnKeeOg8QMX126n8GR5pv_gMYqQ7Rn7B7MqEX_5Iw1n3Jl-BhDbjv/pub?w=928&amp;h=434);
+  height: 500px;
+  background-position: center;
+  background-size: cover;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding-top: 150px;
+  padding-bottom: 40px;
+}
+
+.front_text_style {
+  font-size: 80pt;
+  text-align: center;
+  padding-top: 0px;
+  color: var(--dark_copper_rust);
+}
+
+.middle_text_style {
+  font-size: 40pt;
+  font-weight: 200;
+  text-align: center;
+  padding-top: 0px;
+  color: var(--dark_copper_rust);
+}
+
+.line {
+  /* TODO: Change the color of the line so that it's less weighty */
+  border-color: var(--grey);
+  max-width: 50%;
+}
+
+.button_container {
+  padding-top: 30px;
+  text-align: center;
+}
+
+.home_button {
+  font-size: 25px;
+  font-family: "montserrat";
+  color: var(--dark_copper_rust);
+  padding: var(--m);
+  border-radius: 16px;
+  background-color: var(--primary);
+  cursor: pointer;
+  width: 25%;
+}
+
+.home_button:hover {
+  color: var(--dark_copper_rust);
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.u-flex {
+  padding-top: 50px;
+  display: flex;
+  margin-bottom: 100px;
+}
+
+.u-textCenter {
+  text-align: center;
+}
+
+.subContainer {
+  flex-grow: 1;
+  flex-basis: 0;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.subContainer + .subContainer {
+  margin-left: var(--m);
+}
+
+.subTitle {
+  color: var(--dark_copper_rust);
+  font-size: 50px;
+  font-weight: 500;
+  margin: var(--m) var(--s);
+}
+
+.subText {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--dark_copper_rust);
+}
+
+.image_format {
+  max-width: auto;
+  max-height: 200px;
+}

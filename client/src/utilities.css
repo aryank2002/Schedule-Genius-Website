@@ -15,15 +15,17 @@
 */
 
 /* TODO: REPLACE WITH YOUR OWN FONT! */
-@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap");
 
 :root {
-  --primary: #396dff;
+  --primary: #e7717d;
   --primary--dim: #6987db;
   --darkgrey: #d4d4d4;
   --medgrey: #e0e0e0;
   --grey: #f7f7f7;
   --white: #fff;
+  --copper_rust: #864249;
+  --dark_copper_rust: #5a2c31;
 
   --xs: 4px;
   --s: 8px;
@@ -34,8 +36,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
+  font-family: "Montserrat", montserrat;
+  font-weight: 400;
 }
 
 form {
