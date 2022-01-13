@@ -10,6 +10,7 @@ import { socket } from "../client-socket.js";
 
 import { get, post } from "../utilities";
 import AllSchedules from "./pages/AllSchedules.js";
+import MakeSchedule from "./pages/MakeSchedule";
 
 /**
  * Define the "App" component
@@ -52,6 +53,7 @@ const App = () => {
       <Router>
         <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
         <AllSchedules path={"/schedules/"+userId} userId={userId}/>
+        <MakeSchedule path={"/schedule"}/>
         <NotFound default />
       </Router>
     </>
