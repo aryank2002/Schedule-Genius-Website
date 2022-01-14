@@ -10,6 +10,10 @@
   display: flex;
 }
 
+.sched_img_content {
+  width: 80%;
+}
+
 .sub_container {
   flex-grow: 1;
   flex-basis: 0;
@@ -22,9 +26,10 @@
 .schedules_container {
   background-color: #674ea7;
   box-shadow: 10px 10px 8px #888888;
-  height: 75%;
+  height: 500px;
   width: 60%;
   margin-left: 60px;
+  margin-bottom: 100px;
   border-radius: var(--m);
   padding: 20px;
   display: block;

@@ -6,5 +6,15 @@
   margin-bottom: 5px;
   border-radius: 8px;
   box-shadow: 4px 4px 8px var(--dark_copper_rust);
-  font-size: 20px;
+  padding: 5px;
+}
+.time-title {
+  font-size: 16px;
+  padding: 2px;
+  font-weight: 400;
+}
+.activity-title {
+  padding-top: 25px;
+  font-size: 14px;
+  font-weight: 600;
 }

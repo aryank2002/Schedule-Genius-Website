@@ -1,0 +1,30 @@
+.schedule-card-container,
+.schedule-card-container:visited {
+  background-color: var(--primary);
+  border-radius: 8px;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 2px;
+  box-shadow: 6px 6px 6px var(--dark_copper_rust);
+  text-decoration: none;
+  margin-top: 20px;
+  transition: all 0.3s ease-in;
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in;
+  transition-delay: 0s;
+}
+.schedule-title {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.data-title {
+  color: var(--dark_copper_rust);
+}
+
+.schedule-card-container:hover {
+  color: var(--dark_copper_rust);
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  cursor: pointer;
+}
