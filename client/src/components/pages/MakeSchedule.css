@@ -1,0 +1,59 @@
+.new_schedule_title {
+  font-size: 45px;
+  font-weight: 400;
+  color: var(--dark_copper_rust);
+  margin-left: 50px;
+  margin-top: 40px;
+}
+
+.new_schedule_flex {
+  display: flex;
+}
+
+.new_sub_container {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.new_sub_container + .new_sub_container {
+  margin-left: var(--m);
+}
+
+.new_schedules_container {
+  background-color: #674ea7;
+  box-shadow: 4px 4px 8px #888888;
+  height: 90%;
+  width: 100%;
+  margin-left: 60px;
+  border-radius: var(--m);
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 0px solid red;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+}
+
+.add_button,
+.add_button:visited {
+  font-size: 35px;
+  font-family: "montserrat";
+  color: var(--dark_copper_rust);
+  padding: var(--m);
+  border-radius: 16px;
+  background-color: var(--primary);
+  cursor: pointer;
+  width: 50%;
+  margin-top: 60%;
+  margin-left: 30%;
+  transition: all 0.3s ease-in;
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in;
+  transition-delay: 0s;
+}
+
+.add_button:hover {
+  color: var(--dark_copper_rust);
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}

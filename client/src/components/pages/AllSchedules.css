@@ -22,8 +22,8 @@
 .schedules_container {
   background-color: #674ea7;
   box-shadow: 10px 10px 8px #888888;
-  height: 600px;
-  width: 550px;
+  height: 75%;
+  width: 60%;
   margin-left: 60px;
   border-radius: var(--m);
   padding: 20px;

@@ -4,30 +4,39 @@ import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
 
 import "../../utilities.css";
 import "./Skeleton.css";
+import { Link } from "@reach/router";
 
 const Skeleton = (props) => {
+
+  const changePage = () => {
+    console.log("Hello");
+  };
 
   return (
     <>
       <div className="home_container" >
-      <div class="animated-title">
-        <div class="text-top">
+      <div className="animated-title">
+        <div className="text-top">
           <div>
             <span>The schedule</span>
             <span>designed</span>
           </div>
         </div>
-        <div class="text-bottom">
+        <div className="text-bottom">
           <div>just for you!</div>
         </div>
       </div>
       </div>
       <div className="button_container">
-      <button type="button" className = "home_button">Make a schedule</button>
+        <Link to={"/schedules/" + props.userId}>
+        <button type="button" className = "home_button" onClick={changePage}>
+            Make a schedule
+            </button>
+        </Link>
       </div>
       <h2 className="middle_text_style"> Make your schedule for free! Plan out all of your 
       <br></br>courses, homework, etc. to be successful!</h2>
-      <hr class="line" />
+      <hr className="line" />
 
       <div className="u-flex">
         <section className="subContainer u-textCenter">
@@ -52,14 +61,6 @@ const Skeleton = (props) => {
           Make a schedule. Add required activities in your day. Have other things to do? This website can figure it out for you!
           </p>
         </section>
-      </div>
-      <div class="footer-basic">
-        <footer>
-            <ul class="list-inline">
-                <li class="list-inline-item">Created by Aryan Kumar and Roderick Huang</li>
-            </ul>
-            <p class="copyright">ScheduleGenius © 2022</p>
-        </footer>
       </div>
     </>
   );

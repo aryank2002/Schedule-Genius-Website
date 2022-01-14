@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Router } from "@reach/router";
+import { useHistory } from "react-router-dom";
 import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
 import NavBar from "./modules/NavBar.js";
@@ -15,6 +16,8 @@ import MakeSchedule from "./pages/MakeSchedule";
 /**
  * Define the "App" component
  */
+
+
 const App = () => {
   const [userId, setUserId] = useState(undefined);
 
@@ -41,8 +44,6 @@ const App = () => {
     post("/api/logout");
   };
 
-
-
   return (
     <>
       <NavBar 
@@ -51,11 +52,19 @@ const App = () => {
         userId={userId}
       />
       <Router>
-        <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
+        <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId}/>
         <AllSchedules path={"/schedules/"+userId} userId={userId}/>
         <MakeSchedule path={"/schedule"}/>
         <NotFound default />
       </Router>
+      <div className="footer-basic">
+        <footer>
+            <ul className="list-inline">
+                <li className="list-inline-item">Created by Aryan Kumar and Roderick Huang</li>
+            </ul>
+            <p className="copyright">ScheduleGenius © 2022</p>
+        </footer>
+      </div>
     </>
   );
 };

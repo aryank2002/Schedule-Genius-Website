@@ -2,6 +2,7 @@ import React from 'react'
 import "./AllSchedules.css";
 import "../../utilities.css";
 import "./Skeleton.css";
+import { Link } from "@reach/router";
 
 const AllSchedules = (props) => {
     return (
@@ -22,7 +23,9 @@ const AllSchedules = (props) => {
                 </section>
                 <section className="sub_container">
                     <img src="https://docs.google.com/drawings/d/e/2PACX-1vQFeJEyoWu36oqhKqfmiCr3quztnKeeOg8QMX126n8GR5pv_gMYqQ7Rn7B7MqEX_5Iw1n3Jl-BhDbjv/pub?w=928&amp;h=434"/>
-                    <button type="button" className = "schedule_button">Make a new schedule</button>
+                    <Link to="/schedule">
+                        <button type="button" className = "schedule_button">Create a new schedule</button>
+                    </Link>
                 </section>
             </div>
         </>
