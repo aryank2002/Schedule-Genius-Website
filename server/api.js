@@ -74,7 +74,7 @@ router.post("/addFixedEvent", auth.ensureLoggedIn, (req, res) => {
 });
 
 router.get("/getSchedules", auth.ensureLoggedIn, (req, res) => {
-  ScheduleItem.find({ userId: req.user.name }).then((schedules) => {
+  ScheduleItem.find({ userId: req.user._id }).then((schedules) => {
     res.send(schedules);
   });
 });

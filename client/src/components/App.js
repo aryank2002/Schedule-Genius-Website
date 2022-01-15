@@ -12,11 +12,11 @@ import { socket } from "../client-socket.js";
 import { get, post } from "../utilities";
 import AllSchedules from "./pages/AllSchedules.js";
 import MakeSchedule from "./pages/MakeSchedule";
+import ExistingSchedule from "./pages/ExistingSchedule";
 
 /**
  * Define the "App" component
  */
-
 
 const App = () => {
   const [userId, setUserId] = useState(undefined);
@@ -46,23 +46,20 @@ const App = () => {
 
   return (
     <>
-      <NavBar 
-        handleLogin={handleLogin} 
-        handleLogout={handleLogout} 
-        userId={userId}
-      />
+      <NavBar handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
       <Router>
-        <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId}/>
-        <AllSchedules path={"/schedules/"+userId} userId={userId}/>
-        <MakeSchedule path={"/schedule"}/>
+        <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
+        <AllSchedules path={"/schedules/" + userId} userId={userId} />
+        <MakeSchedule path={"/schedule"} />
+        <ExistingSchedule path={"/existing-schedule"} />
         <NotFound default />
       </Router>
       <div className="footer-basic">
         <footer>
-            <ul className="list-inline">
-                <li className="list-inline-item">Created by Aryan Kumar and Roderick Huang</li>
-            </ul>
-            <p className="copyright">ScheduleGenius © 2022</p>
+          <ul className="list-inline">
+            <li className="list-inline-item">Created by Aryan Kumar and Roderick Huang</li>
+          </ul>
+          <p className="copyright">ScheduleGenius © 2022</p>
         </footer>
       </div>
     </>
