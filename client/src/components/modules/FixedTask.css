@@ -1,0 +1,14 @@
+.fixed_event_card_container {
+  background-color: #fffacd;
+  height: 100px;
+  margin-top: 5%;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  margin-right: 5%;
+  margin-left: 5%;
+  width: auto;
+  box-shadow: 4px 4px 8px var(--dark_copper_rust);
+  padding: 5px;
+}
+.fixed_events_container {
+}
