@@ -4,6 +4,7 @@ import { Link } from "@reach/router";
 import DayOfWeekList from '../modules/DayOfWeekList';
 import FixedTasks from '../modules/FixedTasks';
 import AddFixedEvent from '../modules/AddFixedEvent';
+import VariableTasks from '../modules/VariableTasks';
 import AddVariableEvent from '../modules/AddVariableEvent';
 import { useState } from 'react';
 
@@ -29,7 +30,7 @@ const MakeSchedule = (props) => {
             endHour: 9,
             startMinute: 15,
             endMinute: 15,
-            day: "Monday", // can make a number possible
+            dayOfWeek: "Monday", // can make a number possible
 
             parent: "10000", // refers to the _id of parent schedule
             eventName: "Basketball",
@@ -40,7 +41,7 @@ const MakeSchedule = (props) => {
             endHour: 22,
             startMinute: 15,
             endMinute: 30,
-            day: "Wednesday", // can make a number possible
+            dayOfWeek: "Wednesday", // can make a number possible
 
             parent: "10000", // refers to the _id of parent schedule
             eventName: "Swimming",
@@ -51,7 +52,7 @@ const MakeSchedule = (props) => {
             endHour: 5,
             startMinute: 0,
             endMinute: 30,
-            day: "Sunday", // can make a number possible
+            dayOfWeek: "Sunday", // can make a number possible
 
             parent: "10000", // refers to the _id of parent schedule
             eventName: "Calculus",
@@ -60,28 +61,31 @@ const MakeSchedule = (props) => {
 
     const [variableTasks, setVariableTasks] = useState([
         {
+            id: 4,
             hoursDur: 1,
             minDur: 30,
 
             parent: "10000", // refers to the _id of parent schedule
             eventName: "school hw",
-            deadline: "Wednesday", // may change to number, denoting day
+            dayOfWeek: "Wednesday", // may change to number, denoting day
         },
         {
+            id: 5,
             hoursDur: 3,
             minDur: 0,
 
             parent: "10000", // refers to the _id of parent schedule
             eventName: "things to do",
-            deadline: "Thursday", // may change to number, denoting day
+            dayOfWeek: "Thursday", // may change to number, denoting day
         },
         {
+            id: 6,
             hoursDur: 4,
             minDur: 15,
 
             parent: "10000", // refers to the _id of parent schedule
             eventName: "tv time",
-            deadline: "Sunday", // may change to number, denoting day
+            dayOfWeek: "Sunday", // may change to number, denoting day
         },
 
     ]);
@@ -99,6 +103,19 @@ const MakeSchedule = (props) => {
         setFixedTasks(fixedTasks.filter((task) => task.id !== id));
     }
 
+    // Add Variable Task
+    const addVariableTask = (task) => {
+        const id = Math.floor(Math.random() * 10000) + 1; // generate random id number
+
+        const newVariableTasks = {id, ...task};
+        setVariableTasks([...variableTasks, newVariableTasks]);
+    }
+
+    // Delete Fixed Task
+    const deleteVariableTask = (id) => {
+        setVariableTasks(variableTasks.filter((task) => task.id !== id));
+    }
+
     return (
         <div>
             <div>
@@ -113,12 +130,12 @@ const MakeSchedule = (props) => {
 
                     <div className="fixed_events_container"> 
                     Variable Tasks
-                    <FixedTasks tasks={fixedTasks}/>
+                    {variableTasks.length > 0 ? <VariableTasks tasks={variableTasks} onDelete={deleteVariableTask}/> : "To add variable events to your schedule,"}
                     </div>
                 </section>
                 <section className="new_sub_container">
                     <AddFixedEvent onAdd={addFixedTask}/>
-                    <AddVariableEvent />
+                    <AddVariableEvent onAdd={addVariableTask}/>
                     <button type="button" className = "add_button">Generate Calendar</button>
                 </section>
             </div>
