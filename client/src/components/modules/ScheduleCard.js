@@ -1,6 +1,6 @@
-import React from 'react'
-import './ScheduleCard.css'
-import { Link } from '@reach/router'
+import React from "react";
+import "./ScheduleCard.css";
+import { Link } from "@reach/router";
 
 const ScheduleCard = (props) => {
     return (
@@ -17,4 +17,4 @@ const ScheduleCard = (props) => {
     )
 }
 
-export default ScheduleCard
+export default ScheduleCard;

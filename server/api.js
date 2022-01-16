@@ -70,11 +70,11 @@ router.post("/addFixedEvent", auth.ensureLoggedIn, (req, res) => {
     content: req.body.content,
   });
 
-  newStory.save().then((story) => res.send(story));
+  newStory.save().then((eventObj) => res.send(eventObj));
 });
 
 router.get("/getSchedules", auth.ensureLoggedIn, (req, res) => {
-  ScheduleItem.find({ userId: req.user.name }).then((schedules) => {
+  ScheduleItem.find({ userId: req.user._id }).then((schedules) => {
     res.send(schedules);
   });
 });
