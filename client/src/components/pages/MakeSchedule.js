@@ -6,6 +6,7 @@ import AddFixedEvent from "../modules/AddFixedEvent";
 import VariableTasks from "../modules/VariableTasks";
 import AddVariableEvent from "../modules/AddVariableEvent";
 import { useState } from "react";
+import { get, post } from "../../utilities";
 
 import "../../utilities.css";
 
@@ -15,6 +16,8 @@ const MakeSchedule = (props) => {
   };
 
   const time = get_current_time();
+
+  const [scheduleNum, setScheduleNum] = useState(Math.floor(Math.random() * 10000) + 1);
 
   /** Delete the hardcoded elements later. Just used for testing to see
    * if the props are passed through. Props copied from fixed-event.js and variable-event.js
@@ -113,6 +116,31 @@ const MakeSchedule = (props) => {
     setVariableTasks(variableTasks.filter((task) => task.id !== id));
   };
 
+  //post request to make new schedule and update to MongoDB
+  const createNewSchedule = (event) => {
+    const addSchedule = () => {
+        post("/api/getSchedules" , {userId: props.userId, scheduleNum: scheduleNum, date: time});
+    };
+    const addFixedEvents = () => {
+        for (const elt of fixedTasks) {
+            console.log(elt);
+            post("/api/getEvents" , {
+                startHour: elt.startHour,
+                endHour: elt.endHour,
+                startMinute: elt.startMinute,
+                endMinute: elt.endMinute,
+                day: elt.dayOfWeek,
+                userId: props.userId,
+                scheduleNum: scheduleNum,
+                eventName: elt.eventName,
+            });
+        }
+    }
+    event.preventDefault();
+    addSchedule();
+    addFixedEvents();
+  };
+
   return (
     <div>
       <div>
@@ -141,7 +169,7 @@ const MakeSchedule = (props) => {
         <section className="new_sub_container">
           <AddFixedEvent onAdd={addFixedTask} />
           <AddVariableEvent onAdd={addVariableTask} />
-          <button type="button" className="add_button" onClick={() => console.log(fixedTasks)}>
+          <button type="button" className="add_button" onClick={createNewSchedule}>
             Generate Calendar
           </button>
         </section>

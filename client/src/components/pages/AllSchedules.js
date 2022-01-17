@@ -44,7 +44,7 @@ const AllSchedules = (props) => {
           <div className="schedules_container">
             {schedList.length !== 0 ? (
               schedList.map((schedObj) => (
-                <ScheduleCard _id={schedObj._id} num={schedObj.scheduleNum} date={schedObj.date} />
+                <ScheduleCard key={schedObj._id} _id={schedObj._id} num={schedObj.scheduleNum} date={schedObj.date} />
               ))
             ) : (
               <div> No schedules to display </div>

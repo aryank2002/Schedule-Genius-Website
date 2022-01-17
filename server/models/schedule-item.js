@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const ScheduleItemSchema = new mongoose.Schema({
-  userID: String,
+  userId: String,
   scheduleNum: Number,
   date: String,
   generated: Boolean, // refers to if this is a schedule in progress, or already made

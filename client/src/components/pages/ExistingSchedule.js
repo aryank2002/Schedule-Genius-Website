@@ -5,36 +5,7 @@ import DayOfWeekList from "../modules/DayOfWeekList";
 import { get } from "../../utilities";
 
 const ExistingSchedule = (props) => {
-  const [schedEvents, setSchedEvents] = useState([{
-    startHour: 16,
-    endHour: 19,
-    startMinute: 15,
-    endMinute: 45,
-    day: "Tuesday", // can make a number possible
-
-    parent: "245234235", // refers to the _id of parent schedule
-    eventName: "Test1",
-  },
-  {
-    startHour: 12,
-    endHour: 14,
-    startMinute: 0,
-    endMinute: 0,
-    day: "Tuesday", // can make a number possible
-
-    parent: "2342", // refers to the _id of parent schedule
-    eventName: "Test2",
-  },
-  {
-    startHour: 15,
-    endHour: 18,
-    startMinute: 45,
-    endMinute: 30,
-    day: "Friday", // can make a number possible
-
-    parent: "2342", // refers to the _id of parent schedule
-    eventName: "Test3",
-  },]);
+  const [schedEvents, setSchedEvents] = useState([]);
 
   /*
   [{
@@ -70,9 +41,10 @@ const ExistingSchedule = (props) => {
 
   comment out below for testing purposes
   */
+  console.log(props.userId, props.scheduleNum);
 
   useEffect(() => {
-    get("/api/getEvents", { parent: props._id }).then((events) => {
+    get("/api/getEvents", { userId: props._id, scheduleNum: props.num }).then((events) => {
       setSchedEvents(events);
     });
   }, []);

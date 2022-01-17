@@ -47,23 +47,37 @@ router.post("/initsocket", (req, res) => {
 // |------------------------------|
 
 // STARTED, BUT POST APIs ARE INCOMPLETE (get should be done)
-router.post("/generateSchedule", auth.ensureLoggedIn, (req, res) => {
+router.post("/getSchedules", auth.ensureLoggedIn, (req, res) => {
   // TO DO, NOT DONE
   // When user opens up/refreshes create new schedule page, should open up new event
-  const newStory = new Story({
-    creator_id: req.user._id,
-    creator_name: req.user.name,
-    content: req.body.content,
+  const newSchedule = new ScheduleItem({
+    userId: req.user._id,
+    scheduleNum: req.body.scheduleNum,
+    date: req.body.date,
+    generated: true,
   });
 
-  newStory.save().then((story) => res.send(story));
+  newSchedule.save().then((schedule) => res.send(schedule));
 });
 
-router.post("/addFixedEvent", auth.ensureLoggedIn, (req, res) => {
+router.post("/getEvents", auth.ensureLoggedIn, (req, res) => {
   const fevent = new FixedEvent({
-    creator_id: req.user._id,
-    creator_name: req.user.name,
-    content: req.body.content,
+    // startHour: req.body.startHour,
+    // endHour: req.body.endHour,
+    // startMinute: req.body.startMinute,
+    // endMinute: req.body.eventName,
+    // day: req.body.day,
+    // userId: req.body.userId, 
+    // scheduleNum: req.body.scheduleNum,
+    // eventName: req.body.eventName,
+    startHour: req.body.startHour,
+    endHour: req.body.endHour,
+    startMinute: req.body.startMinute,
+    endMinute: req.body.endMinute,
+    day: req.body.day, // can make a number possible
+    userId: req.user._id, // refers to the _id of parent schedule
+    scheduleNum: req.body.scheduleNum,
+    eventName: req.body.eventName,
   });
 
   fevent.save().then((eventObj) => res.send(eventObj));

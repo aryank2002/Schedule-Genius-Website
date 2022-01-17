@@ -6,8 +6,8 @@ const FixedEventSchema = new mongoose.Schema({
   startMinute: Number,
   endMinute: Number,
   day: String, // can make a number possible
-
-  parent: String, // refers to the _id of parent schedule
+  userId: String, // refers to the _id of parent schedule
+  scheduleNum: Number,
   eventName: String,
 });
 

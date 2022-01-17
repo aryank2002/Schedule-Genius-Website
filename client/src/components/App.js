@@ -51,7 +51,7 @@ const App = () => {
         <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
         <AllSchedules path={"/schedules/" + userId} userId={userId} />
         <MakeSchedule path={"/schedule"} />
-        <ExistingSchedule path={"/existing-schedule"} />
+        <ExistingSchedule path={"/existing-schedule"}/>
         <NotFound default />
       </Router>
       <div className="footer-basic">
