@@ -15,7 +15,7 @@ const DayOfWeekList = (props) => {
     <div className="day_of_week_container">
       <p className="day_of_week_title">{props.day}</p>
 
-      {props.events.map((eventObj) => (
+      {events.map((eventObj) => (
         <EventCard
           startH={eventObj.startHour}
           endH={eventObj.endHour}
