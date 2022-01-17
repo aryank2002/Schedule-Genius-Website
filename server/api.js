@@ -47,7 +47,7 @@ router.post("/initsocket", (req, res) => {
 // |------------------------------|
 
 // STARTED, BUT POST APIs ARE INCOMPLETE (get should be done)
-router.post("/getSchedules", auth.ensureLoggedIn, (req, res) => {
+router.post("/addSchedules", auth.ensureLoggedIn, (req, res) => {
   // TO DO, NOT DONE
   // When user opens up/refreshes create new schedule page, should open up new event
   const newSchedule = new ScheduleItem({
@@ -60,22 +60,23 @@ router.post("/getSchedules", auth.ensureLoggedIn, (req, res) => {
   newSchedule.save().then((schedule) => res.send(schedule));
 });
 
-router.post("/getEvents", auth.ensureLoggedIn, (req, res) => {
+router.post("/addEvents", auth.ensureLoggedIn, (req, res) => {
   const fevent = new FixedEvent({
     // startHour: req.body.startHour,
     // endHour: req.body.endHour,
     // startMinute: req.body.startMinute,
     // endMinute: req.body.eventName,
     // day: req.body.day,
-    // userId: req.body.userId, 
+    // userId: req.body.userId,
     // scheduleNum: req.body.scheduleNum,
     // eventName: req.body.eventName,
     startHour: req.body.startHour,
     endHour: req.body.endHour,
     startMinute: req.body.startMinute,
     endMinute: req.body.endMinute,
-    day: req.body.day, // can make a number possible
+    day: req.body.day,
     userId: req.user._id, // refers to the _id of parent schedule
+    // FIX LINE ABOVE, SHOULD POINT TO PARENT - JUST MARKING as NOTE
     scheduleNum: req.body.scheduleNum,
     eventName: req.body.eventName,
   });
@@ -84,6 +85,7 @@ router.post("/getEvents", auth.ensureLoggedIn, (req, res) => {
 });
 
 router.get("/getSchedules", auth.ensureLoggedIn, (req, res) => {
+  // add { userID: req.user._id, generated: true }
   ScheduleItem.find({ userId: req.user._id }).then((schedules) => {
     res.send(schedules);
   });

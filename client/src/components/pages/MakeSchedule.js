@@ -119,23 +119,25 @@ const MakeSchedule = (props) => {
   //post request to make new schedule and update to MongoDB
   const createNewSchedule = (event) => {
     const addSchedule = () => {
-        post("/api/getSchedules" , {userId: props.userId, scheduleNum: scheduleNum, date: time});
+      post("/api/addSchedules", { scheduleNum: scheduleNum, date: time });
     };
     const addFixedEvents = () => {
-        for (const elt of fixedTasks) {
-            console.log(elt);
-            post("/api/getEvents" , {
-                startHour: elt.startHour,
-                endHour: elt.endHour,
-                startMinute: elt.startMinute,
-                endMinute: elt.endMinute,
-                day: elt.dayOfWeek,
-                userId: props.userId,
-                scheduleNum: scheduleNum,
-                eventName: elt.eventName,
-            });
-        }
-    }
+      for (const elt of fixedTasks) {
+        console.log(elt);
+        post("/api/addEvents", {
+          startHour: elt.startHour,
+          endHour: elt.endHour,
+          startMinute: elt.startMinute,
+          endMinute: elt.endMinute,
+          day: elt.dayOfWeek,
+          userId: props.userId,
+          // add schedule returns the schedule obj it creates, so
+          // you could put addSchedule._id for the above userId
+          scheduleNum: scheduleNum,
+          eventName: elt.eventName,
+        });
+      }
+    };
     event.preventDefault();
     addSchedule();
     addFixedEvents();
