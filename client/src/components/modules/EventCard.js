@@ -1,14 +1,21 @@
-import React from 'react'
-import './EventCard.css'
+import React from "react";
+import "./EventCard.css";
 
 const EventCard = (props) => {
-    return (
-        <div className="event_card_container">
-           <div className="time-title">9:00am-</div>
-           <div className="time-title">11:30am</div>
-           <div className="activity-title">Basketball</div>
-        </div>
-    )
-}
+  // take in startH, startMin, endH, endMin, eventName
+  return (
+    <div className="event_card_container">
+      <div className="time-title">
+        {props.startH % 12}:{props.startMin}
+        {props.startH >= 12 ? "pm" : "am"}
+      </div>
+      <div className="time-title">
+        {props.endH % 12}:{props.endMin}
+        {props.endH >= 12 ? "pm" : "am"}
+      </div>
+      <div className="activity-title">{props.eventName}</div>
+    </div>
+  );
+};
 
-export default EventCard
+export default EventCard;

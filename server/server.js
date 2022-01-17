@@ -33,7 +33,8 @@ const socketManager = require("./server-socket");
 
 // Server configuration below
 // TODO change connection URL after setting up your team database
-const mongoConnectionURL = "mongodb+srv://schedule-genius:WebLab2022!@weblab2022project.1theb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const mongoConnectionURL =
+  "mongodb+srv://schedule-genius:WebLab2022!@weblab2022project.1theb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 // TODO change database name to the name you chose
 const databaseName = "WebLab2022Project";
 

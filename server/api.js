@@ -60,17 +60,13 @@ router.post("/generateSchedule", auth.ensureLoggedIn, (req, res) => {
 });
 
 router.post("/addFixedEvent", auth.ensureLoggedIn, (req, res) => {
-  newStory.save().then((story) => res.send(story));
-});
-
-router.post("/addFixedEvent", auth.ensureLoggedIn, (req, res) => {
   const fevent = new FixedEvent({
     creator_id: req.user._id,
     creator_name: req.user.name,
     content: req.body.content,
   });
 
-  newStory.save().then((eventObj) => res.send(eventObj));
+  fevent.save().then((eventObj) => res.send(eventObj));
 });
 
 router.get("/getSchedules", auth.ensureLoggedIn, (req, res) => {
