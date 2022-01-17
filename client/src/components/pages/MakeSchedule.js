@@ -1,7 +1,6 @@
 import React from "react";
 import "./MakeSchedule.css";
 import { Link } from "@reach/router";
-import DayOfWeekList from "../modules/DayOfWeekList";
 import FixedTasks from "../modules/FixedTasks";
 import AddFixedEvent from "../modules/AddFixedEvent";
 import VariableTasks from "../modules/VariableTasks";
@@ -142,7 +141,7 @@ const MakeSchedule = (props) => {
         <section className="new_sub_container">
           <AddFixedEvent onAdd={addFixedTask} />
           <AddVariableEvent onAdd={addVariableTask} />
-          <button type="button" className="add_button">
+          <button type="button" className="add_button" onClick={() => console.log(fixedTasks)}>
             Generate Calendar
           </button>
         </section>
