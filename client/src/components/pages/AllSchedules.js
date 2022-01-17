@@ -10,6 +10,24 @@ import { get } from "../../utilities";
 const AllSchedules = (props) => {
   const [schedList, setSchedList] = useState([]);
 
+  /*
+  [{
+    userID: "looolool",
+    scheduleNum: 34,
+    date: "1/23/2012",
+    generated: true,
+  },
+  {
+    userID: "Testing",
+    scheduleNum: 523,
+    date: 10/3/2021,
+    generated: true,
+  },]
+
+  comment out below, will just default to above schedules rather than trying to find some
+  for testing purposes
+  */
+
   useEffect(() => {
     get("/api/getSchedules").then((schedCards) => {
       setSchedList(schedCards);
