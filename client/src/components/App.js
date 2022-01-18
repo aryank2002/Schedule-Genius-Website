@@ -49,9 +49,9 @@ const App = () => {
       <NavBar handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
       <Router>
         <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
-        <AllSchedules path={"/schedules/" + userId} userId={userId} />
+        <AllSchedules path={"/schedules"} userId={userId} />
         <MakeSchedule path={"/schedule"} />
-        <ExistingSchedule path={"/existing-schedule"}/>
+        <ExistingSchedule path={"/existing-schedule/"} userId={userId}/>
         <NotFound default />
       </Router>
       <div className="footer-basic">

@@ -22,9 +22,9 @@ const MakeSchedule = (props) => {
   /** Delete the hardcoded elements later. Just used for testing to see
    * if the props are passed through. Props copied from fixed-event.js and variable-event.js
    * What works is adding and deleting elements based on the user input.
-   * DOES NOT WORK with MongoDB database
    */
-  const [fixedTasks, setFixedTasks] = useState([
+  const [fixedTasks, setFixedTasks] = useState([]);
+  /*
     {
       id: 1,
       startHour: 8,
@@ -58,7 +58,7 @@ const MakeSchedule = (props) => {
       parent: "10000", // refers to the _id of parent schedule
       eventName: "Calculus",
     },
-  ]);
+  */
 
   const [variableTasks, setVariableTasks] = useState([
     {
@@ -171,9 +171,11 @@ const MakeSchedule = (props) => {
         <section className="new_sub_container">
           <AddFixedEvent onAdd={addFixedTask} />
           <AddVariableEvent onAdd={addVariableTask} />
-          <button type="button" className="add_button" onClick={createNewSchedule}>
-            Generate Calendar
-          </button>
+          <Link to="/schedules">
+            <button type="button" className="add_button" onClick={createNewSchedule}>
+                Generate Calendar
+            </button>
+          </Link>
         </section>
       </div>
     </div>

@@ -23,7 +23,7 @@ const NavBar = (props) => {
           Home
         </Link>
         {
-          <Link to={`/schedules/${props.userId}`} className="NavBar-link">
+          <Link to={"/schedules"} className="NavBar-link">
             My Schedules
           </Link>
         }

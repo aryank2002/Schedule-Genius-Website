@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./MakeSchedule.css";
+import { useLocation } from "@reach/router";
 import { Link } from "@reach/router";
 import DayOfWeekList from "../modules/DayOfWeekList";
 import { get } from "../../utilities";
 
 const ExistingSchedule = (props) => {
   const [schedEvents, setSchedEvents] = useState([]);
+
+  const location = useLocation();
+  const { scheduleNum } = location.state;
 
   /*
     {
@@ -44,18 +48,19 @@ const ExistingSchedule = (props) => {
 
   */
 
-  console.log(props.userId, props.scheduleNum);
-
+ 
   useEffect(() => {
-    get("/api/getEvents", { userId: props._id, scheduleNum: props.num }).then((events) => {
+    get("/api/getEvents").then((events) => {
       setSchedEvents(events);
     });
   }, []);
 
+  console.log(scheduleNum);
+
   return (
     <div>
       <div>
-        <h1 className="new_schedule_title">Schedule #{props.num}</h1>
+        <h1 className="new_schedule_title">Schedule #{scheduleNum}</h1>
       </div>
       <div className="new_schedule_flex">
         <section className="new_sub_container">

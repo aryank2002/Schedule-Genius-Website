@@ -8,10 +8,6 @@ import { Link } from "@reach/router";
 
 const Skeleton = (props) => {
 
-  const changePage = () => {
-    console.log("Hello");
-  };
-
   return (
     <>
       <div className="home_container" >
@@ -28,8 +24,8 @@ const Skeleton = (props) => {
       </div>
       </div>
       <div className="button_container">
-        <Link to={"/schedules/" + props.userId}>
-        <button type="button" className = "home_button" onClick={changePage}>
+        <Link to={"/schedules"}>
+        <button type="button" className = "home_button">
             Make a schedule
             </button>
         </Link>

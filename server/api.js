@@ -92,7 +92,7 @@ router.get("/getSchedules", auth.ensureLoggedIn, (req, res) => {
 });
 
 router.get("/getEvents", auth.ensureLoggedIn, (req, res) => {
-  FixedEvent.find({ parent: req.query.parent }).then((events) => {
+  FixedEvent.find({ userId: req.user._id}).then((events) => {
     res.send(events);
   });
 });
