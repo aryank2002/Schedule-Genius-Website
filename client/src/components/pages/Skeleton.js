@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
 import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
+import logo from "../images/google-logo-9808.png";
 
 import "../../utilities.css";
 import "./Skeleton.css";
@@ -38,7 +39,7 @@ const Skeleton = (props) => {
           clientId={GOOGLE_CLIENT_ID}
           buttonText="Login to get started"
           render={renderProps => (
-            <button onClick={renderProps.onClick} className="login_button_design">Login to get started</button>
+            <button onClick={renderProps.onClick} className="login_button_design">Login with <img src={logo} className="logo_img"/> to get started</button>
           )}
           onSuccess={props.handleLogin}
           onFailure={(err) => console.log(err)}
