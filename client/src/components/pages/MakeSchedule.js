@@ -138,9 +138,117 @@ const MakeSchedule = (props) => {
         });
       }
     };
+
+    /*
+
+    // Add comment here
+    const dayToNum = (dayWeek) => {
+      if (dayWeek === "Sunday") {
+        return 0;
+      }
+      if (dayWeek === "Monday") {
+        return 1;
+      }
+      if (dayWeek === "Tuesday") {
+        return 2;
+      }
+      if (dayWeek === "Wednesday") {
+        return 3;
+      }
+      if (dayWeek === "Thursday") {
+        return 4;
+      }
+      if (dayWeek === "Friday") {
+        return 5;
+      }
+      if (dayWeek === "Saturday") {
+        return 6;
+      }
+    };
+
+    const addVariableEvents = () => {
+      let used = Array(variableTasks.length).fill(false);
+      let seq = Array(variableTasks.length).fill(0);
+      let filled = Array(7 * 24 * 4).fill(false);
+      let made = false;
+
+      for (const elt of fixedTasks) {
+        let st = dayToNum(elt.dayofWeek) * 24 * 4 + elt.startHour * 4 + elt.startMinute;
+        let end = dayToNum(elt.dayofWeek) * 24 * 4 + elt.endHour * 4 + elt.endMinute;
+
+        for (let ind = st; ind < end; ind += 1) {
+          filled[ind] = true;
+        }
+      }
+
+      recursive(0);
+
+      const recursive = (index) => {
+        if (index === variableTasks.length) {
+          if (made === true) return;
+          let timePtr = 0;
+          let elemPtr = 0;
+          let time = Array(variableTasks.length).fill(0);
+
+          while (timePtr < 24 * 7 * 4 && elemPtr < variableTasks.length) {
+            while (filled[timePtr] === true && timePtr < 24 * 7 * 4) {
+              timePtr += 1;
+            }
+
+            if (timePtr == 24 * 7 * 4) {
+              break;
+            }
+
+            // check if variable events can be scheduled in this order
+          }
+
+          if ((elemPtr = variableTasks.length)) {
+            made = true;
+            for (let j = 0; j < variableTasks.length; j += 1) {
+              // TO DO
+              post("/api/addEvents", {
+                startHour: elt.startHour,
+                endHour: elt.endHour,
+                startMinute: elt.startMinute,
+                endMinute: elt.endMinute,
+                day: elt.dayOfWeek,
+                userId: props.userId,
+                // add schedule returns the schedule obj it creates, so
+                // you could put addSchedule._id for the above userId
+                scheduleNum: scheduleNum,
+                eventName: elt.eventName,
+              });
+            }
+          }
+        } else {
+          if (made === true) return;
+          for (let i = 0; i < variableTasks.length; i += 1) {
+            if (used[i] === false) {
+              seq[index] = i;
+              used[i] = true;
+              recursive(index + 1);
+              used[i] = false;
+            }
+          }
+        }
+      };
+
+      // If schedule can be generated it will; otherwise, does nothing
+    };
+
+    // REALLY INEFFICIENT, roughly 650 * n * n! operations
+    // end comment here
+
+    */
+
+    // TO DO, SCHEDULE Variable TIME Events
+    // Tues - 2hour, Wed - 1 hour, Thu - 1 hour, Fr - 2 hour
+    // two assignments, first (1 hour, wednesday) second (2 hour, thursday)
     event.preventDefault();
     addSchedule();
     addFixedEvents();
+
+    // addVariableEvents();
   };
 
   return (
@@ -173,7 +281,7 @@ const MakeSchedule = (props) => {
           <AddVariableEvent onAdd={addVariableTask} />
           <Link to="/schedules">
             <button type="button" className="add_button" onClick={createNewSchedule}>
-                Generate Calendar
+              Generate Calendar
             </button>
           </Link>
         </section>
