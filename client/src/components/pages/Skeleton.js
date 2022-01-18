@@ -6,6 +6,8 @@ import "../../utilities.css";
 import "./Skeleton.css";
 import { Link } from "@reach/router";
 
+const GOOGLE_CLIENT_ID = "236244320342-part5884unaimln856mvdvkkc84a9r6e.apps.googleusercontent.com";
+
 const Skeleton = (props) => {
 
   return (
@@ -25,9 +27,23 @@ const Skeleton = (props) => {
       </div>
       <div className="button_container">
         <Link to={"/schedules"}>
+        {props.userId ? 
         <button type="button" className = "home_button">
-            Make a schedule
-            </button>
+            Start making a schedule
+        </button> : ""
+        }
+        {props.userId ? 
+        "" : (
+        <GoogleLogin
+          clientId={GOOGLE_CLIENT_ID}
+          buttonText="Login to get started"
+          render={renderProps => (
+            <button onClick={renderProps.onClick} className="login_button_design">Login to get started</button>
+          )}
+          onSuccess={props.handleLogin}
+          onFailure={(err) => console.log(err)}
+        />
+        )}
         </Link>
       </div>
       <h2 className="middle_text_style"> Make your schedule for free! Plan out all of your 

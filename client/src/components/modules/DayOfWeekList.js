@@ -25,6 +25,7 @@ const DayOfWeekList = (props) => {
 
       {props.eventList.map((eventObj) => (
         <EventCard
+          key={eventObj._id}
           startH={eventObj.startHour}
           endH={eventObj.endHour}
           startMin={eventObj.startMinute}
