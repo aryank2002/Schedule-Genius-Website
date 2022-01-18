@@ -13,8 +13,16 @@ const AddFixedEvent = (props) => {
 
     //make sure start time is less than end time
     const checkValidTimes = (startHour, startMinute, endHour, endMinute) => {
-        if(startHour > endHour) return false;
-        if(startHour == endHour && startMinute >= endMinute) return false;
+        console.log(startHour, startMinute, endHour, endMinute);
+        if(startHour > endHour) 
+        {
+            console.log(startHour, endHour, startHour > endHour, "fsdf");
+            return false;
+        }
+        if(startHour == endHour && startMinute >= endMinute) {
+            console.log("fdsafasdfasdf")
+            return false;
+        }
         return true;
     }
 
