@@ -173,8 +173,8 @@ const MakeSchedule = (props) => {
       let made = false;
 
       for (const elt of fixedTasks) {
-        let st = dayToNum(elt.dayofWeek) * 24 * 4 + elt.startHour * 4 + elt.startMinute;
-        let end = dayToNum(elt.dayofWeek) * 24 * 4 + elt.endHour * 4 + elt.endMinute;
+        let st = dayToNum(elt.dayofWeek) * 24 * 4 + elt.startHour * 4 + elt.startMinute / 15;
+        let end = dayToNum(elt.dayofWeek) * 24 * 4 + elt.endHour * 4 + elt.endMinute / 15;
 
         for (let ind = st; ind < end; ind += 1) {
           filled[ind] = true;
@@ -191,7 +191,7 @@ const MakeSchedule = (props) => {
           let time = Array(variableTasks.length).fill(0);
 
           while (timePtr < 24 * 7 * 4 && elemPtr < variableTasks.length) {
-            while (filled[timePtr] === true && timePtr < 24 * 7 * 4) {
+            while (timePtr < 24 * 7 * 4 && filled[timePtr] === true) {
               timePtr += 1;
             }
 
@@ -199,24 +199,74 @@ const MakeSchedule = (props) => {
               break;
             }
 
+            if (timePtr % (24 * 4) >= 88 || timePtr % (24 * 4) < 9 * 4) {
+              timePtr += 1;
+              continue;
+            }
+
+            curElem = variableTasks[seq[elemPtr]];
+            let endT = timePtr + curElem.hoursDur * 4 + curElem.minDur;
+
+            if (endT > 24 * 7 * 4) {
+              break;
+            }
+
+            if (endT % (24 * 4) >= 88 || endT % (24 * 4) < 37) {
+              timePtr += 1;
+              continue;
+            }
+
+            let pos = true;
+            for (let t = timePtr; t < endT; t += 1) {
+              if (filled[t] === true) {
+                timePtr = t + 1;
+                pos = false;
+                break;
+              }
+            }
+
+            if (pos === false) {
+              continue;
+            }
+
+            if (endT > (dayWeek(curElem.dayOfWeek) + 1) * 24 * 4) {
+              break;
+              // makes sure ends by that day, midnight
+            }
+
+            time[elemPtr] = timePtr;
+            timePtr = endT;
+            elemPtr += 1;
+
             // check if variable events can be scheduled in this order
           }
 
-          if ((elemPtr = variableTasks.length)) {
+          const dayList = [
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+          ];
+          if (elemPtr === variableTasks.length) {
             made = true;
             for (let j = 0; j < variableTasks.length; j += 1) {
               // TO DO
+              let curElem = variableTasks[seq[j]];
+              let endT = time[j] + curElem.hoursDur * 4 + curElem.minDur;
               post("/api/addEvents", {
-                startHour: elt.startHour,
-                endHour: elt.endHour,
-                startMinute: elt.startMinute,
-                endMinute: elt.endMinute,
-                day: elt.dayOfWeek,
+                startHour: Math.floor((time[j] % (24 * 4)) / 4),
+                endHour: Math.floor((endT % (24 * 4)) / 4),
+                startMinute: Math.floor((time[j] % (24 * 4)) % 4) * 15,
+                endMinute: Math.floor((endT % (24 * 4)) % 4) * 15,
+                day: dayList[Math.floor(time[j] / 96)],
                 userId: props.userId,
                 // add schedule returns the schedule obj it creates, so
                 // you could put addSchedule._id for the above userId
                 scheduleNum: scheduleNum,
-                eventName: elt.eventName,
+                eventName: curElem.eventName,
               });
             }
           }
