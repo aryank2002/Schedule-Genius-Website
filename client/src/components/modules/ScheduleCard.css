@@ -1,6 +1,6 @@
 .schedule-card-container,
 .schedule-card-container:visited {
-  background-color: var(--primary);
+  background: linear-gradient(45deg, var(--primary), #f76b4f);
   border-radius: 8px;
   padding-left: 10px;
   padding-top: 10px;

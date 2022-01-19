@@ -18,7 +18,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap");
 
 :root {
-  --primary: #e7717d;
+  --primary: #eb6a65;
   --primary--dim: #6987db;
   --darkgrey: #d4d4d4;
   --medgrey: #e0e0e0;
@@ -26,6 +26,7 @@
   --white: #fff;
   --copper_rust: #864249;
   --dark_copper_rust: #5a2c31;
+  --blue_color: rgb(28, 121, 184);
 
   --xs: 4px;
   --s: 8px;
@@ -149,4 +150,7 @@ form {
   font-size: 13px;
   color: #aaa;
   margin-bottom: 0;
+}
+.all_container_margin {
+  margin-top: 90px;
 }

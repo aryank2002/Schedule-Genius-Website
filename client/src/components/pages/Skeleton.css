@@ -1,6 +1,7 @@
 body {
   background-color: #faf5f2;
   overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .home_container {

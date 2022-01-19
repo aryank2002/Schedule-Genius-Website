@@ -35,12 +35,6 @@ const AddFixedEvent = (props) => {
     }
 
     props.onAdd({ eventName, dayOfWeek, startHour, startMinute, endHour, endMinute });
-    setEventName("");
-    setdayOfWeek("Sunday");
-    setStartHour(0);
-    setStartMinute(0);
-    setEndHour(0);
-    setEndMinute(0);
   };
 
   return (
