@@ -13,6 +13,7 @@ import { get, post } from "../utilities";
 import AllSchedules from "./pages/AllSchedules.js";
 import MakeSchedule from "./pages/MakeSchedule";
 import ExistingSchedule from "./pages/ExistingSchedule";
+import "../../../loader.js"
 
 /**
  * Define the "App" component
