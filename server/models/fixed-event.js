@@ -8,6 +8,7 @@ const FixedEventSchema = new mongoose.Schema({
   day: String, // can make a number possible
   userId: String, // refers to the _id of parent schedule
   scheduleNum: Number,
+  scheduleName: String,
   eventName: String,
 });
 

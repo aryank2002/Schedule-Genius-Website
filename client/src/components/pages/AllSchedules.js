@@ -50,6 +50,7 @@ const AllSchedules = (props) => {
                   key={schedObj._id}
                   _id={schedObj._id}
                   num={schedObj.scheduleNum}
+                  name={schedObj.scheduleName}
                   date={schedObj.date}
                 />
               ))

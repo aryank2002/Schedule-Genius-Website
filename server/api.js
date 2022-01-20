@@ -53,6 +53,7 @@ router.post("/addSchedules", auth.ensureLoggedIn, (req, res) => {
   const newSchedule = new ScheduleItem({
     userId: req.user._id,
     scheduleNum: req.body.scheduleNum,
+    scheduleName: req.body.scheduleName,
     date: req.body.date,
     generated: true,
   });
@@ -78,6 +79,7 @@ router.post("/addEvents", auth.ensureLoggedIn, (req, res) => {
     userId: req.user._id, // refers to the _id of parent schedule
     // FIX LINE ABOVE, SHOULD POINT TO PARENT - JUST MARKING as NOTE
     scheduleNum: req.body.scheduleNum,
+    scheduleName: req.body.scheduleName,
     eventName: req.body.eventName,
   });
 

@@ -4,6 +4,7 @@ const ScheduleItemSchema = new mongoose.Schema({
   userId: String,
   scheduleNum: Number,
   date: String,
+  scheduleName: String,
   generated: Boolean, // refers to if this is a schedule in progress, or already made
   // probably don't need; when generate schedule button is clicked, we can THEN create a schedule
   // with all events (stored in state lists) being made fixed events

@@ -11,11 +11,11 @@ const ScheduleCard = (props) => {
     <>
 
       <div className="link-decoration">
-        <Link to={"/existing-schedule"} state={{scheduleNum: props.num}}>
+        <Link to={"/existing-schedule"} state={{scheduleName: props.name}}>
           <div className="schedule-card-container" onClick={() => console.log("Hello")}>
-            <div className="schedule-title" >Schedule #{props.num} <FaTimes
+            <div className="schedule-title" >Schedule: {props.name} <FaTimes
                 style={{ color: 'red', cursor: 'pointer' }}
-                onClick={() => console.log("Hello")}/></div>
+                onClick={() => console.log("Hello my guy")}/></div>
             <p className="data-title"> Date Created: {props.date}</p>
           </div>
         </Link>

@@ -12,7 +12,7 @@ const ExistingSchedule = (props) => {
   const [schedEvents, setSchedEvents] = useState([]);
 
   const location = useLocation();
-  const { scheduleNum } = location.state;
+  const { scheduleName } = location.state;
 
   /*
     {
@@ -442,7 +442,7 @@ const ExistingSchedule = (props) => {
     }
   });
 
-  const monEvents = (schedEvents.filter((eventObj) => eventObj.day === "Monday" && scheduleNum === eventObj.scheduleNum)).map((eventObj) => (
+  const monEvents = (schedEvents.filter((eventObj) => eventObj.day === "Monday" && scheduleName === eventObj.scheduleName)).map((eventObj) => (
     <li className="single-event" data-start={eventObj.startHour + ":" + eventObj.startMinute} data-end={eventObj.endHour + ":" + eventObj.endMinute} data-event="event-1">
       <a>
         <em className="event-name">{eventObj.eventName}</em>
@@ -455,7 +455,7 @@ const ExistingSchedule = (props) => {
   return (
     <div>
       <div>
-        <h1 className="new_schedule_title">Schedule #{scheduleNum}</h1>
+        <h1 className="new_schedule_title">Schedule: {scheduleName}</h1>
       </div>
       <div>
         <div className="cd-schedule loading">
@@ -485,7 +485,7 @@ const ExistingSchedule = (props) => {
           {
             /*
               <ul>
-                    {(schedEvents.filter((eventObj) => eventObj.day === "Monday" && scheduleNum === eventObj.scheduleNum)).map((eventObj) => (
+                    {(schedEvents.filter((eventObj) => eventObj.day === "Monday" && scheduleName === eventObj.scheduleName)).map((eventObj) => (
                       <li className="single-event" 
                           data-start={eventObj.startHour + ":" + eventObj.startMinute + "-"} 
                           data-end={eventObj.endHour + ":" + eventObj.endMinute} 
@@ -585,31 +585,31 @@ const ExistingSchedule = (props) => {
           <div className="new_schedules_container">
             <DayOfWeekList
               day="Sunday"
-              eventList={schedEvents.filter((eventObj) => eventObj.day === "Sunday"  && scheduleNum === eventObj.scheduleNum)}
+              eventList={schedEvents.filter((eventObj) => eventObj.day === "Sunday"  && scheduleName === eventObj.scheduleName)}
             />
             <DayOfWeekList
               day="Monday"
-              eventList={schedEvents.filter((eventObj) => eventObj.day === "Monday" && scheduleNum === eventObj.scheduleNum)}
+              eventList={schedEvents.filter((eventObj) => eventObj.day === "Monday" && scheduleName === eventObj.scheduleName)}
             />
             <DayOfWeekList
               day="Tuesday"
-              eventList={schedEvents.filter((eventObj) => eventObj.day === "Tuesday" && scheduleNum === eventObj.scheduleNum)}
+              eventList={schedEvents.filter((eventObj) => eventObj.day === "Tuesday" && scheduleName === eventObj.scheduleName)}
             />
             <DayOfWeekList
               day="Wednesday"
-              eventList={schedEvents.filter((eventObj) => eventObj.day === "Wednesday" && scheduleNum === eventObj.scheduleNum)}
+              eventList={schedEvents.filter((eventObj) => eventObj.day === "Wednesday" && scheduleName === eventObj.scheduleName)}
             />
             <DayOfWeekList
               day="Thursday"
-              eventList={schedEvents.filter((eventObj) => eventObj.day === "Thursday" && scheduleNum === eventObj.scheduleNum)}
+              eventList={schedEvents.filter((eventObj) => eventObj.day === "Thursday" && scheduleName === eventObj.scheduleName)}
             />
             <DayOfWeekList
               day="Friday"
-              eventList={schedEvents.filter((eventObj) => eventObj.day === "Friday" && scheduleNum === eventObj.scheduleNum)}
+              eventList={schedEvents.filter((eventObj) => eventObj.day === "Friday" && scheduleName === eventObj.scheduleName)}
             />
             <DayOfWeekList
               day="Saturday"
-              eventList={schedEvents.filter((eventObj) => eventObj.day === "Saturday" && scheduleNum === eventObj.scheduleNum)}
+              eventList={schedEvents.filter((eventObj) => eventObj.day === "Saturday" && scheduleName === eventObj.scheduleName)}
             />
           </div>
         </section>

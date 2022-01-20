@@ -18,6 +18,7 @@ const MakeSchedule = (props) => {
   const time = get_current_time();
 
   const [scheduleNum, setScheduleNum] = useState(Math.floor(Math.random() * 10000) + 1);
+  const [schedName, setSchedName] = useState("");
 
   /** Delete the hardcoded elements later. Just used for testing to see
    * if the props are passed through. Props copied from fixed-event.js and variable-event.js
@@ -106,7 +107,7 @@ const MakeSchedule = (props) => {
 
   // Add Variable Task
   const addVariableTask = (task) => {
-    const id = Math.floor(Math.random() * 10000) + 1; // generate random id number
+    const id = Math.floor(Math.random() * 100000) + 1; // generate random id number
 
     const newVariableTasks = { id, ...task };
     setVariableTasks([...variableTasks, newVariableTasks]);
@@ -119,8 +120,14 @@ const MakeSchedule = (props) => {
 
   //post request to make new schedule and update to MongoDB
   const createNewSchedule = (event) => {
+
+    if(!schedName) {
+      alert('Please input schedule name');
+      return;
+    }
+    console.log(schedName);
     const addSchedule = () => {
-      post("/api/addSchedules", { scheduleNum: scheduleNum, date: time });
+      post("/api/addSchedules", { scheduleNum: scheduleNum, date: time, scheduleName: schedName });
     };
     const addFixedEvents = () => {
       for (const elt of fixedTasks) {
@@ -135,6 +142,7 @@ const MakeSchedule = (props) => {
           // add schedule returns the schedule obj it creates, so
           // you could put addSchedule._id for the above userId
           scheduleNum: scheduleNum,
+          scheduleName: schedName,
           eventName: elt.eventName,
         });
       }
@@ -343,11 +351,18 @@ const MakeSchedule = (props) => {
           <AddVariableEvent onAdd={addVariableTask} />
           <br></br>
           <span className="generate_text">Step 3. Press below after you've<br></br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; added all your events!</span>
-          <Link to="/schedules">
+            <form className="sched_name_container">
+              <label>Input Schedule Name: </label>
+              <input
+                type="text"
+                placeholder="Input schedule name here:"
+                value={schedName}
+                onChange={(e) => setSchedName(e.target.value)}
+              />
+            </form>
             <button type="button" className="generate_button" onClick={createNewSchedule}>
               Generate Schedule
             </button>
-          </Link>
         </section>
       </div>
     </div>
