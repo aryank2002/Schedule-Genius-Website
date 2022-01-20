@@ -1,5 +1,6 @@
-.fixed_event_card_container {
-  background-color: #fffacd;
+.fixed_event_card_container,
+.fixed_event_card_container:visited {
+  background: linear-gradient(45deg, var(--primary), #f76b4f);
   height: 100px;
   margin-top: 5%;
   margin-bottom: 10px;
@@ -9,4 +10,35 @@
   width: auto;
   box-shadow: 4px 4px 8px var(--dark_copper_rust);
   padding: 5px;
+  transition: all 0.3s ease-in;
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in;
+  transition-delay: 0s;
+}
+
+.faTimesdesign,
+.faTimesdesign:visited {
+  color: rgb(191, 20, 20);
+  cursor: pointer;
+  transition: all 0.1s ease-in;
+  transition-property: all;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in;
+  transition-delay: 0s;
+}
+.faTimesdesign:hover {
+  color: rgb(237, 18, 18);
+  cursor: pointer;
+}
+
+.fixed_event_title {
+  font-size: 20px;
+  display: flex;
+  font-weight: 500;
+  justify-content: space-between;
+  margin: 8px;
+}
+.activity_text_design {
+  margin-left: 16px;
 }

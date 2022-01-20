@@ -152,6 +152,8 @@ const ExistingSchedule = (props) => {
         //place each event in the grid -> need to set top position and height
         var start = getScheduleTimestamp($(this).attr('data-start')),
           duration = getScheduleTimestamp($(this).attr('data-end')) - start;
+
+        console.log(start, duration, 'fdasfasdf');
   
         var eventTop = self.eventSlotHeight*(start - self.timelineStart)/self.timelineUnitDuration,
           eventHeight = self.eventSlotHeight*duration/self.timelineUnitDuration;
@@ -508,102 +510,32 @@ const ExistingSchedule = (props) => {
               <li className="events-group">
                 <div className="top-info"><span>Tuesday</span></div>
                 <ul>
-                  <li className="single-event" data-start="10:0" data-end="17:00" data-event="event-2">
-                    <a href="#0">
-                      <em className="event-name">Rowing Workout</em>
-                    </a>
-                  </li>
+                  
                 </ul>
               </li>
               <li className="events-group">
                 <div className="top-info"><span>Wednesday</span></div>
                 <ul>
-                  <li className="single-event" data-start="09:00" data-end="10:15" data-content="event-restorative-yoga" data-event="event-4">
-                    <a href="#0">
-                      <em className="event-name">Restorative Yoga</em>
-                    </a>
-                  </li>
-                  <li className="single-event" data-start="10:45" data-end="11:45" data-content="event-yoga-1" data-event="event-3">
-                    <a href="#0">
-                      <em className="event-name">Yoga Level 1</em>
-                    </a>
-                  </li>
-                  <li className="single-event" data-start="12:00" data-end="13:45" data-content="event-rowing-workout" data-event="event-2">
-                    <a href="#0">
-                      <em className="event-name">Rowing Workout</em>
-                    </a>
-                  </li>
-                  <li className="single-event" data-start="13:45" data-end="15:00" data-content="event-yoga-1" data-event="event-3">
-                    <a href="#0">
-                      <em className="event-name">Yoga Level 1</em>
-                    </a>
-                  </li>
+                  
                 </ul>
               </li>
               <li className="events-group">
                 <div className="top-info"><span>Thursday</span></div>
                 <ul>
-                  <li className="single-event" data-start="09:30" data-end="10:30" data-content="event-abs-circuit" data-event="event-1">
-                    <a href="#0">
-                      <em className="event-name">Abs Circuit</em>
-                    </a>
-                  </li>
-                  <li className="single-event" data-start="12:00" data-end="13:45" data-content="event-restorative-yoga" data-event="event-4">
-                    <a href="#0">
-                      <em className="event-name">Restorative Yoga</em>
-                    </a>
-                  </li>
-                  <li className="single-event" data-start="15:30" data-end="16:30" data-content="event-abs-circuit" data-event="event-1">
-                    <a href="#0">
-                      <em className="event-name">Abs Circuit</em>
-                    </a>
-                  </li>
-                  <li className="single-event" data-start="17:00" data-end="18:30" data-content="event-rowing-workout" data-event="event-2">
-                    <a href="#0">
-                      <em className="event-name">Rowing Workout</em>
-                    </a>
-                  </li>
+                  
                 </ul>
               </li>
               <li className="events-group">
                 <div className="top-info"><span>Friday</span></div>
                 <ul>
-                  <li className="single-event" data-start="10:00" data-end="11:00" data-content="event-rowing-workout" data-event="event-2">
-                    <a href="#0">
-                      <em className="event-name">Rowing Workout</em>
-                    </a>
-                  </li>
-                  <li className="single-event" data-start="12:30" data-end="14:00" data-content="event-abs-circuit" data-event="event-1">
-                    <a href="#0">
-                      <em className="event-name">Abs Circuit</em>
-                    </a>
-                  </li>
-                  <li className="single-event" data-start="15:45" data-end="16:45" data-content="event-yoga-1" data-event="event-3">
-                    <a href="#0">
-                      <em className="event-name">Yoga Level 1</em>
-                    </a>
-                  </li>
+                  
                 </ul>
               </li>
               {/*        */}
               <li className="events-group">
                 <div className="top-info"><span>Saturday</span></div>
                 <ul>
-                  <li className="single-event" data-start="09:30" data-end="10:30" data-content="event-abs-circuit" data-event="event-1">
-                    <a href="#0">
-                      <em className="event-name">Abs Circuit</em>
-                    </a>
-                  </li>
-                  <li className="single-event" data-start="11:00" data-end="12:30" data-content="event-rowing-workout" data-event="event-2">
-                    <a href="#0">
-                      <em className="event-name">Rowing Workout</em>
-                    </a>
-                  </li>
-                  <li className="single-event" data-start="14:00" data-end="15:15" data-content="event-yoga-1" data-event="event-3">
-                    <a href="#0">
-                      <em className="event-name">Yoga Level 1</em>
-                    </a>
-                  </li>
+                  
                 </ul>
               </li>
               {/*        */}

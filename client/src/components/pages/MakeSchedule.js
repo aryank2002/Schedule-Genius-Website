@@ -60,7 +60,8 @@ const MakeSchedule = (props) => {
     },
   */
 
-  const [variableTasks, setVariableTasks] = useState([
+  const [variableTasks, setVariableTasks] = useState([]);
+  /*
     {
       id: 4,
       hoursDur: 1,
@@ -88,7 +89,7 @@ const MakeSchedule = (props) => {
       eventName: "tv time",
       dayOfWeek: "Sunday", // may change to number, denoting day
     },
-  ]);
+  */
 
   // Add Fixed Task
   const addFixedTask = (task) => {
@@ -301,6 +302,14 @@ const MakeSchedule = (props) => {
     // addVariableEvents();
   };
 
+  const fixedText = <div className="fixedText">
+    <b>Step 1.</b> Add the fixed events of your week here.
+  </div>;
+
+  const variableText = <div className="fixedText">
+  <b>Step 2.</b> Add the variable events of your week here.
+  </div>;
+
   return (
     <div>
       <div>
@@ -308,30 +317,35 @@ const MakeSchedule = (props) => {
       </div>
       <div className="new_schedule_flex">
         <section className="new_sub_container new_sub_container_flex">
-          <div className="fixed_events_container">
-            Fixed Tasks
-            {fixedTasks.length > 0 ? (
-              <FixedTasks tasks={fixedTasks} onDelete={deleteFixedTask} />
-            ) : (
-              "To add fixed events to your schedule,"
-            )}
-          </div>
 
-          <div className="fixed_events_container">
-            Variable Tasks
-            {variableTasks.length > 0 ? (
-              <VariableTasks tasks={variableTasks} onDelete={deleteVariableTask} />
-            ) : (
-              "To add variable events to your schedule,"
-            )}
-          </div>
+            <div className="fixed_events_container">
+            <div className="boxText"><u>Fixed Events</u></div>
+              {fixedTasks.length > 0 ? (
+                <FixedTasks tasks={fixedTasks} onDelete={deleteFixedTask} />
+              ) : (
+                fixedText
+              )}
+            </div>
+
+            
+            <div className="fixed_events_container">
+              <div className="boxText"><u>Variable Events</u></div>
+              {variableTasks.length > 0 ? (
+                <VariableTasks tasks={variableTasks} onDelete={deleteVariableTask} />
+              ) : (
+                variableText
+              )}
+            </div>
+
         </section>
         <section className="new_sub_container">
           <AddFixedEvent onAdd={addFixedTask} />
           <AddVariableEvent onAdd={addVariableTask} />
+          <br></br>
+          <span className="generate_text">Step 3. Press below after you've<br></br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; added all your events!</span>
           <Link to="/schedules">
-            <button type="button" className="add_button" onClick={createNewSchedule}>
-              Generate Calendar
+            <button type="button" className="generate_button" onClick={createNewSchedule}>
+              Generate Schedule
             </button>
           </Link>
         </section>

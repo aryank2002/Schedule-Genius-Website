@@ -208,13 +208,14 @@ input:focus + .line:after {
   background-color: #674ea7;
   box-shadow: 10px 10px 8px #888888;
   height: 500px;
-  width: 60%;
+  width: 100%;
   margin-left: 5%;
   margin-bottom: 100px;
   border-radius: var(--m);
   display: block;
   border: 0px solid red;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .option_one_questions {
@@ -226,4 +227,57 @@ input {
   background-color: var(--primary);
   border-radius: var(--s);
   font-size: 16px;
+}
+
+.boxText {
+  font-size: 24px;
+  color: var(--dark_copper_rust);
+  width: 110%;
+  font-weight: 400;
+  background: linear-gradient(45deg, var(--primary), #f76b4f);
+  border-radius: var(--s) var(--s) 0 0;
+  padding: 15px;
+  padding-left: 20px;
+  box-shadow: 2px 2px 2px #5a0d79;
+}
+
+.fixedText {
+  padding: 10%;
+  padding-top: 20%;
+  font-size: 40px;
+  text-align: center;
+  color: var(--primary);
+  text-shadow: 2px 2px 8px #110404;
+}
+
+.generate_text {
+  margin-left: 25%;
+  color: var(--dark_copper_rust);
+  margin-top: 20px;
+  font-size: 30px;
+}
+
+.generate_button,
+.generate_button:visited {
+  font-size: 35px;
+  font-family: "montserrat";
+  color: var(--dark_copper_rust);
+  padding: var(--m);
+  border-radius: 16px;
+  background-color: var(--primary);
+  cursor: pointer;
+  width: 50%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  margin-left: 30%;
+  transition: all 0.3s ease-in;
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in;
+  transition-delay: 0s;
+}
+
+.generate_button:hover {
+  color: var(--dark_copper_rust);
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }

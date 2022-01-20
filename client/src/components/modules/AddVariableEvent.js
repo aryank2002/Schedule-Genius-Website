@@ -27,7 +27,7 @@ const AddVariableEvent = (props) => {
     return (
         <>
         <div className="make_schedule_text">
-            Option 2: Variable Events
+            Step 2: Add Variable Events
             </div>
             <div className="option_two_questions">
                 <form>
@@ -48,7 +48,7 @@ const AddVariableEvent = (props) => {
                     <option value="Saturday">Saturday</option>
                 </select>
                 </form>
-                <div>Input start time:</div>
+                <div>Input time required:</div>
                 <select id="hoursDur" name="hoursDur" value={hoursDur}
                 onChange={(e) => setHoursDur(e.target.value) }>
                     <option value={0}>0</option>
@@ -76,14 +76,14 @@ const AddVariableEvent = (props) => {
                     <option value={22}>22</option>
                     <option value={23}>23</option>
                 </select>
-                :
+                hrs :
                 <select id="minDur" name="minDur" value={minDur}
                 onChange={(e) => setMinDur(e.target.value) }>
                     <option value={0}>00</option>
                     <option value={15}>15</option>
                     <option value={30}>30</option>
                     <option value={45}>45</option>
-                </select>
+                </select>min
                 <div></div>
             <button type="button" className = "submit_variable_questions" onClick={onSubmit}>Submit Variable Event</button>
         </div>
