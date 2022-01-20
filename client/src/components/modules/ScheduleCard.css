@@ -6,7 +6,6 @@
   padding-top: 10px;
   padding-bottom: 2px;
   box-shadow: 6px 6px 6px var(--dark_copper_rust);
-  text-decoration: none;
   margin-top: 20px;
   transition: all 0.3s ease-in;
   transition-property: all;
@@ -31,4 +30,21 @@
 
 .link-decoration {
   text-decoration: none;
+}
+
+.fa_schedule_design,
+.fa_schedule_design:visited {
+  background: linear-gradient(45deg, var(--primary), #f76b4f);
+  color: rgb(191, 20, 20);
+  cursor: pointer;
+  transition: all 0.1s ease-in;
+  transition-property: all;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in;
+  transition-delay: 0s;
+  font-size: 20px;
+}
+.fa_schedule_design:hover {
+  color: rgb(237, 18, 18);
+  cursor: pointer;
 }

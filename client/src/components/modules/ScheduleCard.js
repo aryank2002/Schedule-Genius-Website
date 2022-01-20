@@ -11,14 +11,19 @@ const ScheduleCard = (props) => {
     <>
 
       <div className="link-decoration">
-        <Link to={"/existing-schedule"} state={{scheduleName: props.name}}>
-          <div className="schedule-card-container" onClick={() => console.log("Hello")}>
-            <div className="schedule-title" >Schedule: {props.name} <FaTimes
-                style={{ color: 'red', cursor: 'pointer' }}
-                onClick={() => console.log("Hello my guy")}/></div>
-            <p className="data-title"> Date Created: {props.date}</p>
+          <div className="whole-container">
+              <div className="schedule-card-container">
+              <FaTimes
+              className="fa_schedule_design"
+              onClick={() => props.onDelete(props.task.id)}
+              />
+              <Link to={"/existing-schedule"} state={{scheduleName: props.name}}>
+                <div className="schedule-title" >Schedule: {props.name} </div>
+                <p className="data-title"> Date Created: {props.date}</p>
+              </Link>
+              </div>
           </div>
-        </Link>
+        
       </div>
     </>
   );
