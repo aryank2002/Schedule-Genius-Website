@@ -377,3 +377,10 @@ a {
   margin-right: var(--m);
   opacity: 1;
 }
+
+.dummy-nothing {
+  width: 0px;
+  height: 0px;
+  margin: 0px;
+  padding: 0px;
+}

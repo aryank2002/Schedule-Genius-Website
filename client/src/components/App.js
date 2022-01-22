@@ -13,7 +13,7 @@ import { get, post } from "../utilities";
 import AllSchedules from "./pages/AllSchedules.js";
 import MakeSchedule from "./pages/MakeSchedule";
 import ExistingSchedule from "./pages/ExistingSchedule";
-import "../../../loader.js"
+import "../../../loader.js";
 
 /**
  * Define the "App" component
@@ -47,13 +47,14 @@ const App = () => {
 
   return (
     <>
-      <div className="all_container_margin"></div>
+      {userId !== undefined ? <div className="all_container_margin"></div> : null}
+
       <NavBar handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
       <Router>
         <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
         <AllSchedules path={"/schedules"} userId={userId} />
         <MakeSchedule path={"/schedule"} />
-        <ExistingSchedule path={"/existing-schedule/"} userId={userId}/>
+        <ExistingSchedule path={"/existing-schedule/"} userId={userId} />
         <NotFound default />
       </Router>
       <div className="footer-basic">
