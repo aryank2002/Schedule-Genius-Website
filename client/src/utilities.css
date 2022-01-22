@@ -18,6 +18,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap");
 
 :root {
+  /*
+  --primary: #eb6a65;
+  --primary--dim: #6987db;
+  --darkgrey: #d4d4d4;
+
+  */
   --primary: #eb6a65;
   --primary--dim: #6987db;
   --darkgrey: #d4d4d4;

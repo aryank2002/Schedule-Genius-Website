@@ -24,7 +24,9 @@
 }
 
 .schedules_container {
-  background-color: #674ea7;
+  background-color: #d2c1b0;
+  /* background-color: #674ea7; 
+  comment out above color to switch */
   box-shadow: 10px 10px 8px #888888;
   height: 500px;
   width: 60%;
