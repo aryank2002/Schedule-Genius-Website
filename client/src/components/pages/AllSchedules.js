@@ -32,10 +32,10 @@ const AllSchedules = (props) => {
   */
 
   const deleteSched = (schedID) => {
-    post("/api/delSchedule", { id: schedID }).then((response) => console.log(response));
+    post("/api/delSchedule", { id: schedID }).then(
     get("/api/getSchedules").then((schedCards) => {
       setSchedList(schedCards);
-    });
+    }));
   };
 
   useEffect(() => {

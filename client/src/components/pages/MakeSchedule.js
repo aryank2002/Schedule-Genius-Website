@@ -275,6 +275,7 @@ const MakeSchedule = (props) => {
                 // add schedule returns the schedule obj it creates, so
                 // you could put addSchedule._id for the above userId
                 scheduleNum: scheduleNum,
+                scheduleName: schedName,
                 eventName: curElem.eventName,
               });
             }
