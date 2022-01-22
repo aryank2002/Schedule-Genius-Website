@@ -86,6 +86,14 @@ router.post("/addEvents", auth.ensureLoggedIn, (req, res) => {
   fevent.save().then((eventObj) => res.send(eventObj));
 });
 
+router.post("/delSchedule", auth.ensureLoggedIn, (req, res) => {
+  // add { userID: req.user._id, generated: true }
+  ScheduleItem.deleteOne({ _id: req.body.id }).then((err) => {
+    if (err) return console.log("didn't work");
+    res.send(req.body.id);
+  });
+});
+
 router.get("/getSchedules", auth.ensureLoggedIn, (req, res) => {
   // add { userID: req.user._id, generated: true }
   ScheduleItem.find({ userId: req.user._id }).then((schedules) => {
@@ -94,7 +102,7 @@ router.get("/getSchedules", auth.ensureLoggedIn, (req, res) => {
 });
 
 router.get("/getEvents", auth.ensureLoggedIn, (req, res) => {
-  FixedEvent.find({ userId: req.user._id}).then((events) => {
+  FixedEvent.find({ userId: req.user._id }).then((events) => {
     res.send(events);
   });
 });

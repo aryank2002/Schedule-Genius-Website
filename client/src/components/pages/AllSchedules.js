@@ -6,6 +6,7 @@ import { Link } from "@reach/router";
 import ScheduleCard from "../modules/ScheduleCard";
 
 import { get } from "../../utilities";
+import { post } from "../../utilities";
 
 const AllSchedules = (props) => {
   const [schedList, setSchedList] = useState([]);
@@ -30,6 +31,13 @@ const AllSchedules = (props) => {
   
   */
 
+  const deleteSched = (schedID) => {
+    post("/api/delSchedule", { id: schedID }).then((response) => console.log(response));
+    get("/api/getSchedules").then((schedCards) => {
+      setSchedList(schedCards);
+    });
+  };
+
   useEffect(() => {
     get("/api/getSchedules").then((schedCards) => {
       setSchedList(schedCards);
@@ -52,6 +60,7 @@ const AllSchedules = (props) => {
                   num={schedObj.scheduleNum}
                   name={schedObj.scheduleName}
                   date={schedObj.date}
+                  funct={deleteSched}
                 />
               ))
             ) : (
