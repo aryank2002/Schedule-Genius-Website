@@ -15,7 +15,7 @@ const ExistingSchedule = (props) => {
   const { scheduleName } = location.state;
 
   useEffect(() => {
-    get("/api/getEvents", {scheduleName: scheduleName}).then((events) => {
+    get("/api/getEvents", { scheduleName: scheduleName }).then((events) => {
       setSchedEvents(events);
     });
   }, []);
@@ -130,15 +130,21 @@ const ExistingSchedule = (props) => {
             <td className=" no-events" rowSpan={1} />
             <td className=" no-events" rowSpan={1} />
             <td className=" has-events" rowSpan={8}>
-              <div className="row-fluid lecture" style={{width: '99%', height: '100%'}}>
-                <span className="title">Data Structures</span> <span className="lecturer"><a>Prof.
-                    If</a></span> <span className="location">54/222</span>
+              <div className="row-fluid lecture" style={{ width: "99%", height: "100%" }}>
+                <span className="title">Data Structures</span>{" "}
+                <span className="lecturer">
+                  <a>Prof. If</a>
+                </span>{" "}
+                <span className="location">54/222</span>
               </div>
             </td>
             <td className=" has-events" rowSpan={4}>
-              <div className="row-fluid lecture" style={{width: '99%', height: '100%'}}>
-                <span className="title">Data Structures</span> <span className="lecturer"><a>Prof.
-                    If</a></span> <span className="location">54/222</span>
+              <div className="row-fluid lecture" style={{ width: "99%", height: "100%" }}>
+                <span className="title">Data Structures</span>{" "}
+                <span className="lecturer">
+                  <a>Prof. If</a>
+                </span>{" "}
+                <span className="location">54/222</span>
               </div>
             </td>
           </tr>
@@ -171,9 +177,12 @@ const ExistingSchedule = (props) => {
           <tr>
             <td>10:00</td>
             <td className=" has-events" rowSpan={5}>
-              <div className="row-fluid lecture" style={{width: '99%', height: '100%'}}>
-                <span className="title">Combinatorics</span> <span className="lecturer"><a>Prof.
-                    Someone</a></span> <span className="location">23/111</span>
+              <div className="row-fluid lecture" style={{ width: "99%", height: "100%" }}>
+                <span className="title">Combinatorics</span>{" "}
+                <span className="lecturer">
+                  <a>Prof. Someone</a>
+                </span>{" "}
+                <span className="location">23/111</span>
               </div>
             </td>
             <td className=" has-events" rowSpan={4}>
@@ -184,9 +193,12 @@ const ExistingSchedule = (props) => {
               </a></td>
             <td className=" no-events" rowSpan={1}/>
             <td className=" has-events" rowSpan={4}>
-              <div className="row-fluid lecture" style={{width: '99%', height: '100%'}}>
-                <span className="title">Data Structures</span> <span className="lecturer"><a>Prof.
-                    If</a></span> <span className="location">54/222</span>
+              <div className="row-fluid lecture" style={{ width: "99%", height: "100%" }}>
+                <span className="title">Data Structures</span>{" "}
+                <span className="lecturer">
+                  <a>Prof. If</a>
+                </span>{" "}
+                <span className="location">54/222</span>
               </div>
             </td>
             <td className=" no-events" rowSpan={1} />
@@ -210,20 +222,29 @@ const ExistingSchedule = (props) => {
             <td>12:00</td>
             <td className=" no-events" rowSpan={1} />
             <td className=" has-events conflicts " rowSpan={4}>
-              <div className="row-fluid practice" style={{width: '49.5%', height: '100%'}}>
-                <span className="title">Algebra 2</span> <span className="lecturer"><a>Mr.
-                    Someone</a></span> <span className="location">12/444</span>
+              <div className="row-fluid practice" style={{ width: "49.5%", height: "100%" }}>
+                <span className="title">Algebra 2</span>{" "}
+                <span className="lecturer">
+                  <a>Mr. Someone</a>
+                </span>{" "}
+                <span className="location">12/444</span>
               </div>
-              <div className="row-fluid lecture" style={{width: '49.5%', height: '100%'}}>
-                <span className="title">Calculus 1</span> <span className="lecturer"><a>Prof.
-                    Foo</a></span> <span className="location">66/321</span>
+              <div className="row-fluid lecture" style={{ width: "49.5%", height: "100%" }}>
+                <span className="title">Calculus 1</span>{" "}
+                <span className="lecturer">
+                  <a>Prof. Foo</a>
+                </span>{" "}
+                <span className="location">66/321</span>
               </div>
             </td>
             <td className=" no-events" rowSpan={1} />
             <td className=" has-events" rowSpan={4}>
-              <div className="row-fluid lecture" style={{width: '99%', height: '100%'}}>
-                <span className="title">Algebra 2</span> <span className="lecturer"><a>Prof.
-                    Oak</a></span> <span className="location">54/224</span>
+              <div className="row-fluid lecture" style={{ width: "99%", height: "100%" }}>
+                <span className="title">Algebra 2</span>{" "}
+                <span className="lecturer">
+                  <a>Prof. Oak</a>
+                </span>{" "}
+                <span className="location">54/224</span>
               </div>
             </td>
           </tr>
@@ -254,16 +275,22 @@ const ExistingSchedule = (props) => {
             <td className=" no-events" rowSpan={1} />
             <td className=" no-events" rowSpan={1} />
             <td className=" has-events" rowSpan={4}>
-              <div className="row-fluid lecture" style={{width: '99%', height: '100%'}}>
-                <span className="title">Data Structures</span> <span className="lecturer"><a>Prof.
-                    Oak</a></span> <span className="location">33/111</span>
+              <div className="row-fluid lecture" style={{ width: "99%", height: "100%" }}>
+                <span className="title">Data Structures</span>{" "}
+                <span className="lecturer">
+                  <a>Prof. Oak</a>
+                </span>{" "}
+                <span className="location">33/111</span>
               </div>
             </td>
             <td className=" no-events" rowSpan={1} />
             <td className=" has-events" rowSpan={6}>
-              <div className="row-fluid lecture" style={{width: '99%', height: '100%'}}>
-                <span className="title">Calculus 1</span> <span className="lecturer"><a>Dr.
-                    Ok</a></span> <span className="location">12/54</span>
+              <div className="row-fluid lecture" style={{ width: "99%", height: "100%" }}>
+                <span className="title">Calculus 1</span>{" "}
+                <span className="lecturer">
+                  <a>Dr. Ok</a>
+                </span>{" "}
+                <span className="location">12/54</span>
               </div>
             </td>
           </tr>
@@ -288,27 +315,39 @@ const ExistingSchedule = (props) => {
           <tr>
             <td>16:00</td>
             <td className=" has-events" rowSpan={4}>
-              <div className="row-fluid practice" style={{width: '99%', height: '100%'}}>
-                <span className="title">Calculus 1</span> <span className="lecturer"><a>Mrs.
-                    Ak</a></span> <span className="location">54/125</span>
+              <div className="row-fluid practice" style={{ width: "99%", height: "100%" }}>
+                <span className="title">Calculus 1</span>{" "}
+                <span className="lecturer">
+                  <a>Mrs. Ak</a>
+                </span>{" "}
+                <span className="location">54/125</span>
               </div>
             </td>
             <td className=" has-events" rowSpan={4}>
-              <div className="row-fluid lecture" style={{width: '99%', height: '100%'}}>
-                <span className="title">Combinatorics</span> <span className="lecturer"><a>Ms.
-                    Nice</a></span> <span className="location">99/411</span>
+              <div className="row-fluid lecture" style={{ width: "99%", height: "100%" }}>
+                <span className="title">Combinatorics</span>{" "}
+                <span className="lecturer">
+                  <a>Ms. Nice</a>
+                </span>{" "}
+                <span className="location">99/411</span>
               </div>
             </td>
             <td className=" has-events" rowSpan={4}>
-              <div className="row-fluid practice" style={{width: '99%', height: '100%'}}>
-                <span className="title">Combinatorics</span> <span className="lecturer"><a>Ms.
-                    K</a></span> <span className="location">24/900</span>
+              <div className="row-fluid practice" style={{ width: "99%", height: "100%" }}>
+                <span className="title">Combinatorics</span>{" "}
+                <span className="lecturer">
+                  <a>Ms. K</a>
+                </span>{" "}
+                <span className="location">24/900</span>
               </div>
             </td>
             <td className=" has-events" rowSpan={4}>
-              <div className="row-fluid practice" style={{width: '99%', height: '100%'}}>
-                <span className="title">Data Structures</span> <span className="lecturer"><a>Mr.
-                    Ben</a></span> <span className="location">54/214</span>
+              <div className="row-fluid practice" style={{ width: "99%", height: "100%" }}>
+                <span className="title">Data Structures</span>{" "}
+                <span className="lecturer">
+                  <a>Mr. Ben</a>
+                </span>{" "}
+                <span className="location">54/214</span>
               </div>
             </td>
           </tr>
@@ -408,9 +447,9 @@ const ExistingSchedule = (props) => {
         </section>
         <section className="new_sub_container">
           <Link to="/schedules">
-          <button type="button" className="add_button">
-            Back to <b>My Schedules</b>
-          </button>
+            <button type="button" className="add_button">
+              Back to <b>My Schedules</b>
+            </button>
           </Link>
         </section>
       </div>
