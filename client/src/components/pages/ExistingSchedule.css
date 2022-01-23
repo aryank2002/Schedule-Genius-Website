@@ -73,3 +73,6 @@ td {
   border: 1px solid black;
   border-collapse: collapse;
 }
+th {
+  font-size: 20px;
+}

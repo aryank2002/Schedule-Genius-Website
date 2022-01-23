@@ -14,58 +14,11 @@ const ExistingSchedule = (props) => {
   const location = useLocation();
   const { scheduleName } = location.state;
 
-  /*
-    {
-      startHour: 16,
-      endHour: 19,
-      startMinute: 15,
-      endMinute: 45,
-      day: "Tuesday", // can make a number possible
-
-      parent: "245234235", // refers to the _id of parent schedule
-      eventName: "Test1",
-    },
-    {
-      startHour: 12,
-      endHour: 14,
-      startMinute: 0,
-      endMinute: 0,
-      day: "Tuesday", // can make a number possible
-
-      parent: "2342", // refers to the _id of parent schedule
-      eventName: "Test2",
-    },
-    {
-      startHour: 15,
-      endHour: 18,
-      startMinute: 45,
-      endMinute: 30,
-      day: "Friday", // can make a number possible
-
-      parent: "2342", // refers to the _id of parent schedule
-      eventName: "Test3",
-    },
-  ]);
-
-  comment out below for testing purposes
-
-  */
-
   useEffect(() => {
-    get("/api/getEvents").then((events) => {
+    get("/api/getEvents", {scheduleName: scheduleName}).then((events) => {
       setSchedEvents(events);
     });
   }, []);
-
-  const monEvents = (schedEvents.filter((eventObj) => eventObj.day === "Monday" && scheduleName === eventObj.scheduleName)).map((eventObj) => (
-    <li className="single-event" data-start={eventObj.startHour + ":" + eventObj.startMinute} data-end={eventObj.endHour + ":" + eventObj.endMinute} data-event="event-1">
-      <a>
-        <em className="event-name">{eventObj.eventName}</em>
-      </a>
-    </li>
-  ));
-
-  console.log(schedEvents, "helloisitme");
 
   return (
     <div>
@@ -104,7 +57,7 @@ const ExistingSchedule = (props) => {
                     If</a></span> <span className="location">54/222</span>
               </div>
             </td>
-            <td className=" has-events" rowSpan={7}>
+            <td className=" has-events" rowSpan={4}>
               <div className="row-fluid lecture" style={{width: '99%', height: '100%'}}>
                 <span className="title">Data Structures</span> <span className="lecturer"><a>Prof.
                     If</a></span> <span className="location">54/222</span>
@@ -112,7 +65,7 @@ const ExistingSchedule = (props) => {
             </td>
           </tr>
           <tr>
-            <td>08:15</td>
+            <td>08:30</td>
             <td className=" no-events" rowSpan={1} />
             <td className=" no-events" rowSpan={1} />
             <td className=" no-events" rowSpan={1} />
@@ -209,6 +162,10 @@ const ExistingSchedule = (props) => {
           </tr>
           <tr>
             <td>13:30</td>
+            <td className=" no-events" rowSpan={1} />
+            <td className=" no-events" rowSpan={1} />
+            <td className=" no-events" rowSpan={1} />
+            <td className=" no-events" rowSpan={1} />
             <td className=" no-events" rowSpan={1} />
             <td className=" no-events" rowSpan={1} />
             <td className=" no-events" rowSpan={1} />
@@ -321,6 +278,63 @@ const ExistingSchedule = (props) => {
           </tr>
         </tbody>
       </table>
+      {/* OLD CODE BELOW */}
+
+      <div className="new_schedule_flex">
+        <section className="new_sub_container">
+          <div className="new_schedules_container">
+            <DayOfWeekList
+              day="Sunday"
+              eventList={schedEvents.filter(
+                (eventObj) => eventObj.day === "Sunday" && scheduleName === eventObj.scheduleName
+              )}
+            />
+            <DayOfWeekList
+              day="Monday"
+              eventList={schedEvents.filter(
+                (eventObj) => eventObj.day === "Monday" && scheduleName === eventObj.scheduleName
+              )}
+            />
+            <DayOfWeekList
+              day="Tuesday"
+              eventList={schedEvents.filter(
+                (eventObj) => eventObj.day === "Tuesday" && scheduleName === eventObj.scheduleName
+              )}
+            />
+            <DayOfWeekList
+              day="Wednesday"
+              eventList={schedEvents.filter(
+                (eventObj) => eventObj.day === "Wednesday" && scheduleName === eventObj.scheduleName
+              )}
+            />
+            <DayOfWeekList
+              day="Thursday"
+              eventList={schedEvents.filter(
+                (eventObj) => eventObj.day === "Thursday" && scheduleName === eventObj.scheduleName
+              )}
+            />
+            <DayOfWeekList
+              day="Friday"
+              eventList={schedEvents.filter(
+                (eventObj) => eventObj.day === "Friday" && scheduleName === eventObj.scheduleName
+              )}
+            />
+            <DayOfWeekList
+              day="Saturday"
+              eventList={schedEvents.filter(
+                (eventObj) => eventObj.day === "Saturday" && scheduleName === eventObj.scheduleName
+              )}
+            />
+          </div>
+        </section>
+        <section className="new_sub_container">
+          <Link to="/schedules">
+          <button type="button" className="add_button">
+            Back to <b>My Schedules</b>
+          </button>
+          </Link>
+        </section>
+      </div>
     </div>
   );
 };

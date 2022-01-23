@@ -1,6 +1,6 @@
 .fixed_event_card_container,
 .fixed_event_card_container:visited {
-  background: linear-gradient(45deg, var(--primary), #f76b4f);
+  background-color: var(--primary);
   height: 100px;
   margin-top: 5%;
   margin-bottom: 10px;
