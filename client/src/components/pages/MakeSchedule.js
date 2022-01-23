@@ -148,7 +148,7 @@ const MakeSchedule = (props) => {
       }
     };
 
-    /*
+    
 
     // Add comment here
     const dayToNum = (dayWeek) => {
@@ -190,8 +190,6 @@ const MakeSchedule = (props) => {
         }
       }
 
-      recursive(0);
-
       const recursive = (index) => {
         if (index === variableTasks.length) {
           if (made === true) return;
@@ -213,7 +211,7 @@ const MakeSchedule = (props) => {
               continue;
             }
 
-            curElem = variableTasks[seq[elemPtr]];
+            let curElem = variableTasks[seq[elemPtr]];
             let endT = timePtr + curElem.hoursDur * 4 + curElem.minDur;
 
             if (endT > 24 * 7 * 4) {
@@ -238,7 +236,7 @@ const MakeSchedule = (props) => {
               continue;
             }
 
-            if (endT > (dayWeek(curElem.dayOfWeek) + 1) * 24 * 4) {
+            if (endT > (dayToNum(curElem.dayOfWeek) + 1) * 24 * 4) {
               break;
               // makes sure ends by that day, midnight
             }
@@ -293,13 +291,14 @@ const MakeSchedule = (props) => {
         }
       };
 
+      recursive(0);
       // If schedule can be generated it will; otherwise, does nothing
     };
 
     // REALLY INEFFICIENT, roughly 650 * n * n! operations
     // end comment here
 
-    */
+    
 
     // TO DO, SCHEDULE Variable TIME Events
     // Tues - 2hour, Wed - 1 hour, Thu - 1 hour, Fr - 2 hour
@@ -308,7 +307,7 @@ const MakeSchedule = (props) => {
     addSchedule();
     addFixedEvents();
 
-    // addVariableEvents();
+    addVariableEvents();
   };
 
   const fixedText = <div className="fixedText">
