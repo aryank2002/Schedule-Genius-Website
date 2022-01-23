@@ -20,6 +20,56 @@ const ExistingSchedule = (props) => {
     });
   }, []);
 
+  const time_slots = ["9:00", "9:15", "9:30", "9:45", "10:00", "10:15", "10:30", "10:45", "11:00", "11:15", "11:30", "11:45", "12:00", "15:00", "15:15", "15:30", "15:45", "16:00", "16:15", "16:30", "16:45", "17:00", "17:15", "17:30", "17:45", "18:00", "18:15", "18:30"];
+
+  const dayToNum = (dayWeek) => {
+    if (dayWeek === "Sunday") {
+      return 0;
+    }
+    if (dayWeek === "Monday") {
+      return 1;
+    }
+    if (dayWeek === "Tuesday") {
+      return 2;
+    }
+    if (dayWeek === "Wednesday") {
+      return 3;
+    }
+    if (dayWeek === "Thursday") {
+      return 4;
+    }
+    if (dayWeek === "Friday") {
+      return 5;
+    }
+    if (dayWeek === "Saturday") {
+      return 6;
+    }
+  };
+  
+  const calculate_row_span = (evt) => {
+    const num = ((evt.endHour * 60 + evt.endMinute) - (evt.startHour * 60 + evt.startMinute))/15;
+    console.log(num);
+    return num;
+  }
+
+  const get_table_contents = (time) => {
+      const elts_of_week = [<td>{time}</td>, <td className=" no-events" rowSpan={1} />, <td className=" no-events" rowSpan={1} />, <td className=" no-events" rowSpan={1} />, <td className=" no-events" rowSpan={1} />, <td className=" no-events" rowSpan={1} />, <td className=" no-events" rowSpan={1} />, <td className=" no-events" rowSpan={1} />]
+
+      for(const evt of schedEvents){
+        if ((evt.scheduleName === scheduleName) && evt.startHour === parseInt(time.substring(0, time.indexOf(":"))) && evt.startMinute === parseInt(time.substring(time.indexOf(":")+1))){
+          elts_of_week[dayToNum(evt.day) + 1] = 
+          <td className=" has-events" rowSpan={calculate_row_span(evt)}>
+            <div className="row-fluid lecture" style={{width: '99%', height: '100%'}}>
+              <span className="title">{evt.eventName}</span> <span className="lecturer"><a>Prof.
+                  Someone</a></span> <span className="location">23/111</span>
+            </div>
+          </td>;
+        }
+      }
+
+      return <tr>{elts_of_week.map(elt => (elt))}</tr>;
+  };
+
   return (
     <div>
       <div>
@@ -39,14 +89,42 @@ const ExistingSchedule = (props) => {
           </tr>
         </thead>
         <tbody>
+          {/* <tr>
+            <td>08:00</td>
+            <td className=" no-events" rowSpan={1} />
+            <td className=" no-events" rowSpan={1} />
+            <td className=" has-events" rowSpan={5}>
+              <div className="row-fluid lecture" style={{width: '99%', height: '100%'}}>
+                <span className="title">Combinatorics</span> <span className="lecturer"><a>Prof.
+                    Someone</a></span> <span className="location">23/111</span>
+              </div>
+            </td>
+          </tr> */}
+          {time_slots.map(get_table_contents)}
+        </tbody>
+      </table>
+      <table className="calendar table table-bordered">
+        <thead>
+          <tr>
+            <th>&nbsp;</th>
+            <th width="14%">Sunday</th>
+            <th width="14%">Monday</th>
+            <th width="14%">Tuesday</th>
+            <th width="14%">Wednesday</th>
+            <th width="14%">Thursday</th>
+            <th width="14%">Friday</th>
+            <th width="14%">Saturday</th>
+          </tr>
+        </thead>
+        <tbody>
           <tr>
             <td>08:00</td>
             <td className=" no-events" rowSpan={1} />
             <td className=" no-events" rowSpan={1} />
-            <td className=" has-events" rowSpan={4}>
+            <td className=" has-events" rowSpan={5}>
               <div className="row-fluid lecture" style={{width: '99%', height: '100%'}}>
-                <span className="title">Data Structures</span> <span className="lecturer"><a>Prof.
-                    If</a></span> <span className="location">54/222</span>
+                <span className="title">Combinatorics</span> <span className="lecturer"><a>Prof.
+                    Someone</a></span> <span className="location">23/111</span>
               </div>
             </td>
             <td className=" no-events" rowSpan={1} />
@@ -69,12 +147,9 @@ const ExistingSchedule = (props) => {
             <td className=" no-events" rowSpan={1} />
             <td className=" no-events" rowSpan={1} />
             <td className=" no-events" rowSpan={1} />
-            <td className=" no-events" rowSpan={1} />
-            <td className=" no-events" rowSpan={1} />
           </tr>
           <tr>
             <td>09:00</td>
-            <td className=" no-events" rowSpan={1} />
             <td className=" no-events" rowSpan={1} />
             <td className=" no-events" rowSpan={1} />
             <td className=" no-events" rowSpan={1} />
@@ -84,7 +159,12 @@ const ExistingSchedule = (props) => {
             <td>09:30</td>
             <td className=" no-events" rowSpan={1} />
             <td className=" no-events" rowSpan={1} />
-            <td className=" no-events" rowSpan={1} />
+            <td className=" has-events" rowSpan={5}>
+              <div className="row-fluid lecture" style={{width: '99%', height: '100%'}}>
+                <span className="title">Tuesday EVent</span> <span className="lecturer"><a>Prof.
+                    Someone</a></span> <span className="location">23/111</span>
+              </div>
+            </td>
             <td className=" no-events" rowSpan={1} />
             <td className=" no-events" rowSpan={1} />
           </tr>
@@ -102,7 +182,7 @@ const ExistingSchedule = (props) => {
                     Else <span className="location">44/654</span>
                   </a></span></div><a>
               </a></td>
-            <td className=" no-events" rowSpan={1} />
+            <td className=" no-events" rowSpan={1}/>
             <td className=" has-events" rowSpan={4}>
               <div className="row-fluid lecture" style={{width: '99%', height: '100%'}}>
                 <span className="title">Data Structures</span> <span className="lecturer"><a>Prof.
@@ -113,11 +193,11 @@ const ExistingSchedule = (props) => {
           </tr>
           <tr>
             <td>10:30</td>
-
             <td className=" no-events" rowSpan={1} />
           </tr>
           <tr>
             <td>11:00</td>
+            <td className=" no-events" rowSpan={1} />
             <td className=" no-events" rowSpan={1} />
             <td className=" no-events" rowSpan={1} />
           </tr>
@@ -146,7 +226,6 @@ const ExistingSchedule = (props) => {
                     Oak</a></span> <span className="location">54/224</span>
               </div>
             </td>
-            <td className=" no-events" rowSpan={1} />
           </tr>
           <tr>
             <td>12:30</td>

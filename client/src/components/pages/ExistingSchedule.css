@@ -70,7 +70,6 @@ table.table-borderless > tbody > tr > td {
 
 table,
 td {
-  border: 1px solid black;
   border-collapse: collapse;
 }
 th {
