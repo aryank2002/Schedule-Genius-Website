@@ -12,7 +12,7 @@ const GOOGLE_CLIENT_ID = "236244320342-part5884unaimln856mvdvkkc84a9r6e.apps.goo
 const Skeleton = (props) => {
   return (
     <>
-      <div className="home_container">
+    <div className="home_container">
         <div className="animated-title">
           <div className="text-top">
             <div>
@@ -25,12 +25,13 @@ const Skeleton = (props) => {
           </div>
         </div>
       </div>
-      <div className="button_container">
-        <Link to={"/schedules"}>
+      <div className="home_button_container">
           {props.userId ? (
+            <Link to={"/schedules"}>
             <button type="button" className="home_button">
               Start making a schedule
             </button>
+            </Link>
           ) : (
             ""
           )}
@@ -49,10 +50,8 @@ const Skeleton = (props) => {
               onFailure={(err) => console.log(err)}
             />
           )}
-        </Link>
       </div>
       <h2 className="middle_text_style">
-        {" "}
         Make your schedule for free! Plan out all of your
         <br></br>courses, homework, etc. to be successful!
       </h2>
