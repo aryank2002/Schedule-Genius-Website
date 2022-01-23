@@ -22,7 +22,7 @@ const NavBar = (props) => {
           </div>
           {/* Navbar Links */}
           <ul id="menu">
-            <Link to="/">
+            <Link to="/" onClick = {() => ($(window).scrollTop(0))}>
               <li>
                 <a>Home</a>
               </li>
