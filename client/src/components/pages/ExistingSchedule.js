@@ -51,7 +51,6 @@ const ExistingSchedule = (props) => {
 
   */
 
- 
   useEffect(() => {
     get("/api/getEvents").then((events) => {
       setSchedEvents(events);
