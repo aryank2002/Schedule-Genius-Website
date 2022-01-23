@@ -1,12 +1,14 @@
 import React from "react";
 import "./MakeSchedule.css";
 import { Link } from "@reach/router";
+import Modal from "react-modal";
 import FixedTasks from "../modules/FixedTasks";
 import AddFixedEvent from "../modules/AddFixedEvent";
 import VariableTasks from "../modules/VariableTasks";
 import AddVariableEvent from "../modules/AddVariableEvent";
 import { useState } from "react";
 import { get, post } from "../../utilities";
+import celebration from "../images/9b96799d061a0528da6b0da7bac5374a.gif"
 
 import "../../utilities.css";
 
@@ -62,6 +64,7 @@ const MakeSchedule = (props) => {
   */
 
   const [variableTasks, setVariableTasks] = useState([]);
+  const[finished_generating, setGeneration] = useState(false);
   /*
     {
       id: 4,
@@ -308,6 +311,7 @@ const MakeSchedule = (props) => {
     addFixedEvents();
 
     addVariableEvents();
+    setGeneration(true);
   };
 
   const fixedText = <div className="fixedText">
@@ -363,8 +367,15 @@ const MakeSchedule = (props) => {
             <button type="button" className="generate_button" onClick={createNewSchedule}>
               Generate Schedule
             </button>
+            <Modal isOpen={finished_generating} className="modal_design">
+              <h2>Congratulations on making a schedule!</h2>
+              <p>Our website has calculated the perfect schedule for you!</p>
+              <img src={celebration} className="celebrate_image"/>
+              <p>Click on <b>My Schedules</b> in the top navigation bar to view the generated schedule.</p>
+            </Modal>
         </section>
       </div>
+
     </div>
   );
 };

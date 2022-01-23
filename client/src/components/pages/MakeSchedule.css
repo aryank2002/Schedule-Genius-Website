@@ -288,3 +288,18 @@ input {
   font-size: 20px;
   color: var(--dark_copper_rust);
 }
+
+.modal_design {
+  background: #d2c1b0;
+  height: 50%;
+  width: 60%;
+  margin-top: 10%;
+  margin-left: 20%;
+  padding: var(--m);
+  border-radius: var(--s);
+}
+
+.celebrate_image {
+  height: 50%;
+  margin-left: 37%;
+}
