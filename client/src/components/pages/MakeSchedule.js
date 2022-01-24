@@ -235,6 +235,16 @@ const MakeSchedule = (props) => {
             if (timePtr % (24 * 4) >= 88 || timePtr % (24 * 4) < 9 * 4) {
               timePtr += 1;
               continue;
+
+              // untested optimization commented below
+              /*
+              const modVal = timePtr % (24 * 4);
+              if (modVal >= 88){
+                timePtr += (9 * 4 + 24 * 4 - modVal);
+              } else if (modVal < 9 * 4){
+                timePtr += (9 * 4 - modVal);
+              }
+              */
             }
 
             let curElem = variableTasks[seq[elemPtr]];
@@ -248,9 +258,18 @@ const MakeSchedule = (props) => {
             if (endT % (24 * 4) > 88 || endT % (24 * 4) < 36) {
               timePtr += 1;
               continue;
+
+              // untested optimization commented below
+              /*
+              const modVal = endT % (24 * 4);
+              if (modVal > 88){
+                timePtr += (9 * 4 + 24 * 4 - modVal);
+              } else if (modVal < 9 * 4){
+                timePtr += (9 * 4 - modVal);
+              }
+              */
             }
 
-            // checked TILL HERE
             let pos = true;
             for (let t = timePtr; t < endT; t += 1) {
               if (filled[t] === true) {
@@ -316,7 +335,9 @@ const MakeSchedule = (props) => {
               seq[index] = i;
               used[i] = true;
 
-              // CAN OPTIMIZE HERE WITH PRUNING
+              // CAN OPTIMIZE HERE WITH PRUNING - TRY IF THERE IS TIME
+              // ALSO TEST, TO ENSURE PROGRAM WORKS & DETERMINE BREAKING POINT (IN TERMS OF HOW
+              // MANY VARIABLE EVENTS CAN BE HANDLED BEFORE PROG. TIMES OUT)
               recursive(index + 1);
               used[i] = false;
             }
