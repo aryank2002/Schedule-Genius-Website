@@ -33,8 +33,8 @@ const ExistingSchedule = (props) => {
     }
   }
 
-  min_hour = Math.max(0, min_hour - 2);
-  max_hour = Math.min(max_hour + 2, 24);
+  min_hour = Math.max(0, min_hour - 1);
+  max_hour = Math.min(max_hour + 1, 24);
 
   const time_slots = [];
   var counter = 0;
@@ -71,7 +71,6 @@ const ExistingSchedule = (props) => {
   
   const calculate_row_span = (evt) => {
     const num = ((evt.endHour * 60 + evt.endMinute) - (evt.startHour * 60 + evt.startMinute))/15;
-    console.log(num);
     return num;
   }
 
@@ -79,11 +78,17 @@ const ExistingSchedule = (props) => {
     return 60 * hours + min;
   }
 
+  const convert_time_to_ampm = (time) => {
+    const hrs = parseInt(time.substring(0, time.indexOf(":")));
+    const min = parseInt(time.substring(time.indexOf(":")+1));
+    return "" + (hrs % 12 === 0 ? 12 : hrs % 12) + ":" + (min === 0 ? "00" : min) + (hrs >= 12 ? "pm" : "am");
+  }
+
   let i = 0;
   let univ_table = [];
 
   const get_table_contents = (time) => {
-      const elts_of_week = [<td>{0 === parseInt(time.substring(time.indexOf(":")+1)) ? time : ""}</td>, <td className=" no-events" rowSpan={1} />, <td className=" no-events" rowSpan={1} />, <td className=" no-events" rowSpan={1} />, <td className=" no-events" rowSpan={1} />, <td className=" no-events" rowSpan={1} />, <td className=" no-events" rowSpan={1} />, <td className=" no-events" rowSpan={1} />]
+      const elts_of_week = [<td>{0 === parseInt(time.substring(time.indexOf(":")+1)) ? convert_time_to_ampm(time) : ""}</td>, <td className=" no-events" rowSpan={1} />, <td className=" no-events" rowSpan={1} />, <td className=" no-events" rowSpan={1} />, <td className=" no-events" rowSpan={1} />, <td className=" no-events" rowSpan={1} />, <td className=" no-events" rowSpan={1} />, <td className=" no-events" rowSpan={1} />]
       const evts=[0,0,0,0,0,0,0]
 
       for(const evt of schedEvents){
@@ -93,14 +98,20 @@ const ExistingSchedule = (props) => {
             for(const week_evt of week){
               if(dayToNum(week_evt.day) < dayToNum(evt.day) && convert_time_to_num(week_evt.endHour, week_evt.endMinute) > convert_time_to_num(evt.startHour,evt.startMinute) ){
                 correct_index--;
+                elts_of_week.pop();
               }
             }
           }
           elts_of_week[correct_index] = 
           <td className=" has-events" rowSpan={calculate_row_span(evt)}>
             <div className="row-fluid lecture" style={{width: '99%', height: '100%'}}>
-              <span className="title">{evt.eventName}</span> <span className="lecturer"><a>Prof.
-                  Someone</a></span> <span className="location">23/111</span>
+              <span className="title">{evt.eventName}</span> <span className="time_design">
+                  {evt.startHour % 12 == 0 ? 12 : evt.startHour % 12}:
+                  {evt.startMinute == 0 ? "00" : evt.startMinute}
+                  {evt.startHour >= 12 ? "pm" : "am"} - {evt.endHour % 12 == 0 ? 12 : evt.endHour % 12}:
+                  {evt.endMinute == 0 ? "00" : evt.endMinute}
+                  {evt.endHour >= 12 ? "pm" : "am"}
+              </span>
             </div>
           </td>;
           evts[dayToNum(evt.day)] = evt;

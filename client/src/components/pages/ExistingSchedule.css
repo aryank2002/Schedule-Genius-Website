@@ -73,6 +73,8 @@ table.table-borderless > tbody > tr > td {
 table,
 td {
   border-collapse: collapse;
+  height: 100%;
+  font-size: 16px;
 }
 th {
   font-size: 20px;
@@ -118,4 +120,13 @@ th {
 .back_button_design:hover {
   color: var(--dark_copper_rust);
   box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.title {
+  margin-top: 5%;
+  font-size: 24px;
+  margin-bottom: 5%;
+}
+.time_design {
+  font-size: 16px;
 }
