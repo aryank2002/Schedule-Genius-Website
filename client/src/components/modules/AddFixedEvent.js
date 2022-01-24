@@ -39,7 +39,7 @@ const AddFixedEvent = (props) => {
 
   return (
     <>
-      <div className="make_schedule_text">Step 1: Add Fixed Events</div>
+      <div className="make_schedule_text"><b>Step 1</b>: Add Fixed Events</div>
       <div className="option_one_questions">
         <form>
           <label>Input Activity Name: </label>

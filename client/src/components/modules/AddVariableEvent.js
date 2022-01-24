@@ -27,7 +27,7 @@ const AddVariableEvent = (props) => {
     return (
         <>
         <div className="make_schedule_text">
-            Step 2: Add Variable Events
+            <b>Step 2</b>: Add Variable Events
             </div>
             <div className="option_two_questions">
                 <form>

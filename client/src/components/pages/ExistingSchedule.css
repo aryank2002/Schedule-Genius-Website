@@ -20,7 +20,6 @@ table.calendar > tbody > tr > td > div {
 
 table.calendar > tbody > tr > td.has-events {
   color: white;
-  cursor: pointer;
   padding: 0;
   border-radius: 4px;
 }
@@ -28,6 +27,9 @@ table.calendar > tbody > tr > td.has-events {
 table.calendar > tbody > tr > td.has-events > div {
   background-color: var(--primary);
   border-left: 1px solid white;
+  border-radius: var(--s);
+  box-shadow: 4px 4px 2px #888888;
+  margin-top: 20px;
 }
 
 table.calendar > tbody > tr > td.has-events > div:first-child {
@@ -74,4 +76,46 @@ td {
 }
 th {
   font-size: 20px;
+}
+
+.existing_schedule_container {
+  background-color: #d2c1b0;
+  padding: var(--m);
+  margin: 5%;
+  margin-top: 2%;
+  border-radius: var(--m);
+  box-shadow: 10px 10px 8px #888888;
+}
+
+.new_schedule_title {
+  font-size: 50px;
+  margin-top: 6%;
+  text-shadow: 1px 1px rgb(151, 138, 138);
+}
+
+.back_button_container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 100px;
+}
+.back_button_design,
+.back_button_design:visited {
+  font-size: 25px;
+  font-family: "montserrat";
+  color: var(--dark_copper_rust);
+  padding: var(--m);
+  border-radius: 16px;
+  background-color: var(--primary);
+  cursor: pointer;
+  width: 500px;
+  transition: all 0.3s ease-in;
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in;
+  transition-delay: 0s;
+}
+
+.back_button_design:hover {
+  color: var(--dark_copper_rust);
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }

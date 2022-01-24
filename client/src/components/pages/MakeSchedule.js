@@ -9,6 +9,8 @@ import AddVariableEvent from "../modules/AddVariableEvent";
 import { useState } from "react";
 import { get, post } from "../../utilities";
 import celebration from "../images/9b96799d061a0528da6b0da7bac5374a.gif";
+import tools from "../images/tools.png";
+import think from "../images/clipart3591000.png"
 
 import "../../utilities.css";
 
@@ -366,12 +368,14 @@ const MakeSchedule = (props) => {
   const fixedText = (
     <div className="fixedText">
       <b>Step 1.</b> Add the fixed events of your week here.
+      <img src={tools} className="tools_image"/>
     </div>
   );
 
   const variableText = (
     <div className="fixedText">
       <b>Step 2.</b> Add the variable events of your week here.
+      <img src={think} className="think_image"/>
     </div>
   );
 
@@ -409,7 +413,7 @@ const MakeSchedule = (props) => {
           <AddVariableEvent onAdd={addVariableTask} />
           <br></br>
           <span className="generate_text">
-            Step 3. Press below after you've<br></br>
+            <b>Step 3</b>. Press below after you've<br></br>
             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; added all your
             events!
           </span>

@@ -44,9 +44,11 @@ a {
 .logo {
   float: left;
   margin-left: 28px;
+  font-weight: 600;
   font-size: 32px;
   height: 60px;
   letter-spacing: 1px;
+  text-shadow: 2px 2px 2px #d36c57;
   color: var(--dark_copper_rust);
 }
 
