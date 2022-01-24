@@ -8,7 +8,7 @@ import VariableTasks from "../modules/VariableTasks";
 import AddVariableEvent from "../modules/AddVariableEvent";
 import { useState } from "react";
 import { get, post } from "../../utilities";
-import celebration from "../images/9b96799d061a0528da6b0da7bac5374a.gif"
+import celebration from "../images/9b96799d061a0528da6b0da7bac5374a.gif";
 
 import "../../utilities.css";
 
@@ -64,7 +64,7 @@ const MakeSchedule = (props) => {
   */
 
   const [variableTasks, setVariableTasks] = useState([]);
-  const[finished_generating, setGeneration] = useState(false);
+  const [finished_generating, setGeneration] = useState(false);
   /*
     {
       id: 4,
@@ -123,37 +123,11 @@ const MakeSchedule = (props) => {
 
   //post request to make new schedule and update to MongoDB
   const createNewSchedule = (event) => {
-
-    if(!schedName) {
-      alert('Please input schedule name');
+    if (!schedName) {
+      alert("Please input schedule name");
       return;
     }
-    console.log(schedName);
-    const addSchedule = () => {
-      post("/api/addSchedules", { scheduleNum: scheduleNum, date: time, scheduleName: schedName });
-    };
-    const addFixedEvents = () => {
-      for (const elt of fixedTasks) {
-        console.log(elt);
-        post("/api/addEvents", {
-          startHour: elt.startHour,
-          endHour: elt.endHour,
-          startMinute: elt.startMinute,
-          endMinute: elt.endMinute,
-          day: elt.dayOfWeek,
-          userId: props.userId,
-          // add schedule returns the schedule obj it creates, so
-          // you could put addSchedule._id for the above userId
-          scheduleNum: scheduleNum,
-          scheduleName: schedName,
-          eventName: elt.eventName,
-        });
-      }
-    };
 
-    
-
-    // Add comment here
     const dayToNum = (dayWeek) => {
       if (dayWeek === "Sunday") {
         return 0;
@@ -178,6 +152,53 @@ const MakeSchedule = (props) => {
       }
     };
 
+    let checkOverlap = Array(24 * 7 * 4).fill(false);
+    for (const elem of fixedTasks) {
+      const st1 = 24 * 4 * dayToNum(elem.dayOfWeek) + 4 * elem.startHour + elem.startMinute / 15;
+      const e1 = 24 * 4 * dayToNum(elem.dayOfWeek) + 4 * elem.endHour + elem.endMinute / 15;
+      for (let i = st1; i < e1; i += 1) {
+        if (checkOverlap[i] === true) {
+          console.log("Here");
+          alert("Please ensure your fixed events do not overlap");
+          return;
+        }
+        checkOverlap[i] = true;
+      }
+    }
+
+    /*
+    // PLAY WITH THIS, SEE IF IT MIGHT NEED TWEAKING TO 7 or can be INCREASED to 9 or 10
+    if (variableTasks.length > 8){
+      alert("Please put only 8 variable-time events or less");
+      return;
+    }
+    */
+
+    console.log(schedName);
+    const addSchedule = () => {
+      post("/api/addSchedules", { scheduleNum: scheduleNum, date: time, scheduleName: schedName });
+    };
+    const addFixedEvents = () => {
+      for (const elt of fixedTasks) {
+        console.log(elt);
+        post("/api/addEvents", {
+          startHour: elt.startHour,
+          endHour: elt.endHour,
+          startMinute: elt.startMinute,
+          endMinute: elt.endMinute,
+          day: elt.dayOfWeek,
+          userId: props.userId,
+          // add schedule returns the schedule obj it creates, so
+          // you could put addSchedule._id for the above userId
+          scheduleNum: scheduleNum,
+          scheduleName: schedName,
+          eventName: elt.eventName,
+        });
+      }
+    };
+
+    // Add comment here
+
     const addVariableEvents = () => {
       let used = Array(variableTasks.length).fill(false);
       let seq = Array(variableTasks.length).fill(0);
@@ -193,6 +214,7 @@ const MakeSchedule = (props) => {
         }
       }
 
+      // Check from here
       const recursive = (index) => {
         if (index === variableTasks.length) {
           if (made === true) return;
@@ -205,33 +227,35 @@ const MakeSchedule = (props) => {
               timePtr += 1;
             }
 
-            if (timePtr == 24 * 7 * 4) {
+            if (timePtr === 24 * 7 * 4) {
               break;
             }
 
+            // CAN ADD SOME CODE HERE TO OPTIMIZE
             if (timePtr % (24 * 4) >= 88 || timePtr % (24 * 4) < 9 * 4) {
               timePtr += 1;
               continue;
             }
 
             let curElem = variableTasks[seq[elemPtr]];
-            let endT = timePtr + curElem.hoursDur * 4 + curElem.minDur;
+            let endT = timePtr + curElem.hoursDur * 4 + curElem.minDur / 15;
 
             if (endT > 24 * 7 * 4) {
               break;
             }
 
-            if (endT % (24 * 4) >= 88 || endT % (24 * 4) < 37) {
+            // CAN ADD SOME CODE HERE TO OPTIMIZE
+            if (endT % (24 * 4) > 88 || endT % (24 * 4) < 36) {
               timePtr += 1;
               continue;
             }
 
+            // checked TILL HERE
             let pos = true;
             for (let t = timePtr; t < endT; t += 1) {
               if (filled[t] === true) {
                 timePtr = t + 1;
                 pos = false;
-                break;
               }
             }
 
@@ -260,12 +284,14 @@ const MakeSchedule = (props) => {
             "Friday",
             "Saturday",
           ];
+
           if (elemPtr === variableTasks.length) {
             made = true;
             for (let j = 0; j < variableTasks.length; j += 1) {
               // TO DO
               let curElem = variableTasks[seq[j]];
-              let endT = time[j] + curElem.hoursDur * 4 + curElem.minDur;
+              // console.log(curElem.minDur);
+              let endT = time[j] + curElem.hoursDur * 4 + curElem.minDur / 15;
               post("/api/addEvents", {
                 startHour: Math.floor((time[j] % (24 * 4)) / 4),
                 endHour: Math.floor((endT % (24 * 4)) / 4),
@@ -281,12 +307,16 @@ const MakeSchedule = (props) => {
               });
             }
           }
-        } else {
+        }
+        // TILL HERE
+        else {
           if (made === true) return;
           for (let i = 0; i < variableTasks.length; i += 1) {
             if (used[i] === false) {
               seq[index] = i;
               used[i] = true;
+
+              // CAN OPTIMIZE HERE WITH PRUNING
               recursive(index + 1);
               used[i] = false;
             }
@@ -301,8 +331,6 @@ const MakeSchedule = (props) => {
     // REALLY INEFFICIENT, roughly 650 * n * n! operations
     // end comment here
 
-    
-
     // TO DO, SCHEDULE Variable TIME Events
     // Tues - 2hour, Wed - 1 hour, Thu - 1 hour, Fr - 2 hour
     // two assignments, first (1 hour, wednesday) second (2 hour, thursday)
@@ -314,13 +342,17 @@ const MakeSchedule = (props) => {
     setGeneration(true);
   };
 
-  const fixedText = <div className="fixedText">
-    <b>Step 1.</b> Add the fixed events of your week here.
-  </div>;
+  const fixedText = (
+    <div className="fixedText">
+      <b>Step 1.</b> Add the fixed events of your week here.
+    </div>
+  );
 
-  const variableText = <div className="fixedText">
-  <b>Step 2.</b> Add the variable events of your week here.
-  </div>;
+  const variableText = (
+    <div className="fixedText">
+      <b>Step 2.</b> Add the variable events of your week here.
+    </div>
+  );
 
   return (
     <div>
@@ -329,53 +361,59 @@ const MakeSchedule = (props) => {
       </div>
       <div className="new_schedule_flex">
         <section className="new_sub_container new_sub_container_flex">
-
-            <div className="fixed_events_container">
-            <div className="boxText"><u>Fixed Events</u></div>
-              {fixedTasks.length > 0 ? (
-                <FixedTasks tasks={fixedTasks} onDelete={deleteFixedTask} />
-              ) : (
-                fixedText
-              )}
+          <div className="fixed_events_container">
+            <div className="boxText">
+              <u>Fixed Events</u>
             </div>
+            {fixedTasks.length > 0 ? (
+              <FixedTasks tasks={fixedTasks} onDelete={deleteFixedTask} />
+            ) : (
+              fixedText
+            )}
+          </div>
 
-            
-            <div className="fixed_events_container">
-              <div className="boxText"><u>Variable Events</u></div>
-              {variableTasks.length > 0 ? (
-                <VariableTasks tasks={variableTasks} onDelete={deleteVariableTask} />
-              ) : (
-                variableText
-              )}
+          <div className="fixed_events_container">
+            <div className="boxText">
+              <u>Variable Events</u>
             </div>
-
+            {variableTasks.length > 0 ? (
+              <VariableTasks tasks={variableTasks} onDelete={deleteVariableTask} />
+            ) : (
+              variableText
+            )}
+          </div>
         </section>
         <section className="new_sub_container">
           <AddFixedEvent onAdd={addFixedTask} />
           <AddVariableEvent onAdd={addVariableTask} />
           <br></br>
-          <span className="generate_text">Step 3. Press below after you've<br></br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; added all your events!</span>
-            <form className="sched_name_container">
-              <label>Input Schedule Name: </label>
-              <input
-                type="text"
-                placeholder="Input schedule name here:"
-                value={schedName}
-                onChange={(e) => setSchedName(e.target.value)}
-              />
-            </form>
-            <button type="button" className="generate_button" onClick={createNewSchedule}>
-              Generate Schedule
-            </button>
-            <Modal isOpen={finished_generating} className="modal_design">
-              <h2>Congratulations on making a schedule!</h2>
-              <p>Our website has calculated the perfect schedule for you!</p>
-              <img src={celebration} className="celebrate_image"/>
-              <p>Click on <b>My Schedules</b> in the top navigation bar to view the generated schedule.</p>
-            </Modal>
+          <span className="generate_text">
+            Step 3. Press below after you've<br></br>
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; added all your
+            events!
+          </span>
+          <form className="sched_name_container">
+            <label>Input Schedule Name: </label>
+            <input
+              type="text"
+              placeholder="Input schedule name here:"
+              value={schedName}
+              onChange={(e) => setSchedName(e.target.value)}
+            />
+          </form>
+          <button type="button" className="generate_button" onClick={createNewSchedule}>
+            Generate Schedule
+          </button>
+          <Modal isOpen={finished_generating} className="modal_design">
+            <h2>Congratulations on making a schedule!</h2>
+            <p>Our website has calculated the perfect schedule for you!</p>
+            <img src={celebration} className="celebrate_image" />
+            <p>
+              Click on <b>My Schedules</b> in the top navigation bar to view the generated schedule.
+            </p>
+          </Modal>
         </section>
       </div>
-
     </div>
   );
 };
