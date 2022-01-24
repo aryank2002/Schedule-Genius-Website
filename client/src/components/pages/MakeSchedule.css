@@ -295,8 +295,9 @@ input {
   width: 60%;
   margin-top: 10%;
   margin-left: 20%;
-  padding: var(--m);
+  padding: 24px;
   border-radius: var(--s);
+  font-size: 20px;
 }
 
 .celebrate_image {

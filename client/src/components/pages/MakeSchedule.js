@@ -434,7 +434,7 @@ const MakeSchedule = (props) => {
             <p>Our website has calculated the perfect schedule for you!</p>
             <img src={celebration} className="celebrate_image" />
             <p>
-              Click on <b>My Schedules</b> in the top navigation bar to view the generated schedule.
+              Click on <Link to="/schedules"><u><b>My Schedules</b></u></Link> in the top navigation bar to view the generated schedule.
             </p>
           </Modal>
         </section>

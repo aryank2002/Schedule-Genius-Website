@@ -75,20 +75,39 @@ const ExistingSchedule = (props) => {
     return num;
   }
 
+  const convert_time_to_num = (hours, min) => {
+    return 60 * hours + min;
+  }
+
+  let i = 0;
+  let univ_table = [];
+
   const get_table_contents = (time) => {
       const elts_of_week = [<td>{0 === parseInt(time.substring(time.indexOf(":")+1)) ? time : ""}</td>, <td className=" no-events" rowSpan={1} />, <td className=" no-events" rowSpan={1} />, <td className=" no-events" rowSpan={1} />, <td className=" no-events" rowSpan={1} />, <td className=" no-events" rowSpan={1} />, <td className=" no-events" rowSpan={1} />, <td className=" no-events" rowSpan={1} />]
+      const evts=[0,0,0,0,0,0,0]
 
       for(const evt of schedEvents){
         if ((evt.scheduleName === scheduleName) && evt.startHour === parseInt(time.substring(0, time.indexOf(":"))) && evt.startMinute === parseInt(time.substring(time.indexOf(":")+1))){
-          elts_of_week[dayToNum(evt.day) + 1] = 
+          var correct_index = dayToNum(evt.day) + 1;
+          for(const week of univ_table){
+            for(const week_evt of week){
+              if(dayToNum(week_evt.day) < dayToNum(evt.day) && convert_time_to_num(week_evt.endHour, week_evt.endMinute) > convert_time_to_num(evt.startHour,evt.startMinute) ){
+                correct_index--;
+              }
+            }
+          }
+          elts_of_week[correct_index] = 
           <td className=" has-events" rowSpan={calculate_row_span(evt)}>
             <div className="row-fluid lecture" style={{width: '99%', height: '100%'}}>
               <span className="title">{evt.eventName}</span> <span className="lecturer"><a>Prof.
                   Someone</a></span> <span className="location">23/111</span>
             </div>
           </td>;
+          evts[dayToNum(evt.day)] = evt;
         }
       }
+      univ_table[i] = [...evts];
+      i++;
 
       return <tr>{elts_of_week.map(elt => (elt))}</tr>;
   };
@@ -131,7 +150,7 @@ const ExistingSchedule = (props) => {
   
       {/* OLD CODE BELOW */}
 
-      {/* <div className="new_schedule_flex">
+      <div className="new_schedule_flex">
         <section className="new_sub_container">
           <div className="new_schedules_container">
             <DayOfWeekList
@@ -178,7 +197,7 @@ const ExistingSchedule = (props) => {
             />
           </div>
         </section>
-      </div> */}
+      </div>
       <section className="back_button_container">
           <Link to="/schedules">
             <button type="button" className="back_button_design">
