@@ -104,7 +104,7 @@ const ExistingSchedule = (props) => {
           }
           elts_of_week[correct_index] = 
           <td className=" has-events" rowSpan={calculate_row_span(evt)}>
-            <div className="row-fluid lecture" style={{width: '99%', height: '100%'}}>
+            <div className="row-fluid lecture" style={{width: '99%', height: '99%'}}>
               <span className="title">{evt.eventName}</span> <span className="time_design">
                   {evt.startHour % 12 == 0 ? 12 : evt.startHour % 12}:
                   {evt.startMinute == 0 ? "00" : evt.startMinute}

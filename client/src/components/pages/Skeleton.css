@@ -104,6 +104,15 @@ body {
   max-height: 200px;
 }
 
+/**
+Animated CSS title
+
+Title: Recreating the iPad Commercial Animation with CSS
+Date: August 06, 2019
+Author: Alvaro Montoro
+Source: https://alvaromontoro.com/blog/67836/recreating-the-ipad-commercial-animation-with-css
+**/
+
 @import url("https://fonts.googleapis.com/css?family=Roboto:700");
 @keyframes showTopText {
   0% {
@@ -173,6 +182,13 @@ body {
   top: 0;
   transform: translate(0, -100%);
 }
+
+/*
+Shaking image CSS 
+
+Source: https://www.w3schools.com/howto/howto_css_shake_image.asp
+Title: How to CSS Shake Image
+*/
 
 .image_format:hover {
   /* Start the shake animation and make the animation last for 0.5 seconds */
