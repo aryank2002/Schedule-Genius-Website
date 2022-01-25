@@ -8,6 +8,8 @@ import ScheduleCard from "../modules/ScheduleCard";
 import { get } from "../../utilities";
 import { post } from "../../utilities";
 
+import existing_image from "../images/existing_schedule_img.png"
+
 const AllSchedules = (props) => {
   const [schedList, setSchedList] = useState([]);
 
@@ -70,7 +72,7 @@ const AllSchedules = (props) => {
         </section>
         <section className="sub_container">
           <img
-            src="https://docs.google.com/drawings/d/e/2PACX-1vQFeJEyoWu36oqhKqfmiCr3quztnKeeOg8QMX126n8GR5pv_gMYqQ7Rn7B7MqEX_5Iw1n3Jl-BhDbjv/pub?w=928&amp;h=434"
+            src={existing_image}
             className="sched_img_content"
           />
           <Link to="/schedule">

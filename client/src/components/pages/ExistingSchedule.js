@@ -161,7 +161,7 @@ const ExistingSchedule = (props) => {
   
       {/* OLD CODE BELOW */}
 
-      <div className="new_schedule_flex">
+      {/* <div className="new_schedule_flex">
         <section className="new_sub_container">
           <div className="new_schedules_container">
             <DayOfWeekList
@@ -208,7 +208,7 @@ const ExistingSchedule = (props) => {
             />
           </div>
         </section>
-      </div>
+      </div> */}
       <section className="back_button_container">
           <Link to="/schedules">
             <button type="button" className="back_button_design">

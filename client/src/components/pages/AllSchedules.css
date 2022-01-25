@@ -84,3 +84,9 @@
   color: var(--dark_copper_rust);
   box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
+
+.existing_schedule_text {
+  color: var(--dark_copper_rust);
+  font-size: 20px;
+  text-align: center;
+}
