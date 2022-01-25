@@ -12,10 +12,10 @@ const ExistingSchedule = (props) => {
   const [schedEvents, setSchedEvents] = useState([]);
 
   const location = useLocation();
-  const { scheduleName } = location.state;
+  const { scheduleName, scheduleNum } = location.state;
 
   useEffect(() => {
-    get("/api/getEvents", { scheduleName: scheduleName }).then((events) => {
+    get("/api/getEvents", { scheduleNum: scheduleNum }).then((events) => {
       setSchedEvents(events);
     });
   }, []);

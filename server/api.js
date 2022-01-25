@@ -102,7 +102,7 @@ router.get("/getSchedules", auth.ensureLoggedIn, (req, res) => {
 });
 
 router.get("/getEvents", auth.ensureLoggedIn, (req, res) => {
-  FixedEvent.find({ userId: req.user._id }).then((events) => {
+  FixedEvent.find({ userId: req.user._id, scheduleNum: req.query.scheduleNum }).then((events) => {
     res.send(events);
   });
 });

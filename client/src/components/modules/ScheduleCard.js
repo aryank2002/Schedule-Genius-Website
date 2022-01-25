@@ -16,7 +16,10 @@ const ScheduleCard = (props) => {
         <div className="whole-container">
           <div className="schedule-card-container">
             <FaTimes className="fa_schedule_design" onClick={() => props.funct(props._id)} />
-            <Link to={"/existing-schedule"} state={{ scheduleName: props.name }}>
+            <Link
+              to={"/existing-schedule"}
+              state={{ scheduleName: props.name, scheduleNum: props.num }}
+            >
               <div className="schedule-title">Schedule: {props.name} </div>
               <p className="data-title"> Date Created: {props.date.substring(0, 16)}</p>
             </Link>
