@@ -10,7 +10,7 @@ import { useState } from "react";
 import { get, post } from "../../utilities";
 import celebration from "../images/9b96799d061a0528da6b0da7bac5374a.gif";
 import tools from "../images/tools.png";
-import think from "../images/clipart3591000.png"
+import think from "../images/clipart3591000.png";
 
 import "../../utilities.css";
 
@@ -204,12 +204,13 @@ const MakeSchedule = (props) => {
     const addVariableEvents = () => {
       let used = Array(variableTasks.length).fill(false);
       let seq = Array(variableTasks.length).fill(0);
-      let filled = Array(7 * 24 * 4).fill(false);
+      const filled = Array(7 * 24 * 4).fill(false);
       let made = false;
 
       for (const elt of fixedTasks) {
-        let st = dayToNum(elt.dayofWeek) * 24 * 4 + elt.startHour * 4 + elt.startMinute / 15;
-        let end = dayToNum(elt.dayofWeek) * 24 * 4 + elt.endHour * 4 + elt.endMinute / 15;
+        let st = dayToNum(elt.dayOfWeek) * 24 * 4 + elt.startHour * 4 + elt.startMinute / 15;
+        let end = dayToNum(elt.dayOfWeek) * 24 * 4 + elt.endHour * 4 + elt.endMinute / 15;
+        console.log(st, end);
 
         for (let ind = st; ind < end; ind += 1) {
           filled[ind] = true;
@@ -289,6 +290,7 @@ const MakeSchedule = (props) => {
               // makes sure ends by that day, midnight
             }
 
+            console.log(timePtr, endT);
             time[elemPtr] = timePtr;
             timePtr = endT;
             elemPtr += 1;
@@ -306,8 +308,11 @@ const MakeSchedule = (props) => {
             "Saturday",
           ];
 
+          console.log(elemPtr);
+          console.log(variableTasks.length);
           if (elemPtr === variableTasks.length) {
             made = true;
+            console.log("DONE");
             for (let j = 0; j < variableTasks.length; j += 1) {
               // TO DO
               let curElem = variableTasks[seq[j]];
@@ -368,14 +373,14 @@ const MakeSchedule = (props) => {
   const fixedText = (
     <div className="fixedText">
       <b>Step 1.</b> Add the fixed events of your week here.
-      <img src={tools} className="tools_image"/>
+      <img src={tools} className="tools_image" />
     </div>
   );
 
   const variableText = (
     <div className="fixedText">
       <b>Step 2.</b> Add the variable events of your week here.
-      <img src={think} className="think_image"/>
+      <img src={think} className="think_image" />
     </div>
   );
 
@@ -434,7 +439,13 @@ const MakeSchedule = (props) => {
             <p>Our website has calculated the perfect schedule for you!</p>
             <img src={celebration} className="celebrate_image" />
             <p>
-              Click on <Link to="/schedules"><u><b>My Schedules</b></u></Link> in the top navigation bar to view the generated schedule.
+              Click on{" "}
+              <Link to="/schedules">
+                <u>
+                  <b>My Schedules</b>
+                </u>
+              </Link>{" "}
+              in the top navigation bar to view the generated schedule.
             </p>
           </Modal>
         </section>
