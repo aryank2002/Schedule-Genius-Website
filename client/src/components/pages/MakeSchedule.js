@@ -373,14 +373,18 @@ const MakeSchedule = (props) => {
   const fixedText = (
     <div className="fixedText">
       <b>Step 1.</b> Add the fixed events of your week here.
-      <p><img src={tools} className="tools_image"/></p>
+      <p>
+        <img src={tools} className="tools_image" />
+      </p>
     </div>
   );
 
   const variableText = (
     <div className="fixedText">
       <b>Step 2.</b> Add the variable events of your week here.
-      <p><img src={think} className="think_image"/></p>
+      <p>
+        <img src={think} className="think_image" />
+      </p>
     </div>
   );
 
