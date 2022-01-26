@@ -396,27 +396,39 @@ const MakeSchedule = (props) => {
         <h1 className="new_schedule_title">New Schedule</h1>
       </div>
       <div className="new_schedule_flex">
-        <section className="new_sub_container new_sub_container_flex">
-          <div className="fixed_events_container">
-            <div className="boxText">
-              <u>Fixed Events</u>
-            </div>
-            {fixedTasks.length > 0 ? (
-              <FixedTasks tasks={fixedTasks} onDelete={deleteFixedTask} />
-            ) : (
-              fixedText
-            )}
+        <section className="new_sub_container">
+          <div className="make_text_container">
+            <h1 className="make_text_title">How the schedule is made:</h1>
+            <span className="make_text_design">Step 1. Add your fixed events to the schedule.</span>
+            <p className="make_text_example">Ex: <b>Basketball practice</b> on <b>Monday</b> from <b>7:00</b>-<b>9:00</b>.</p>
+            <p className="make_text_design">Step 2. Add your variable events to the schedule.</p>
+            <p className="make_text_example">Ex: <b>5 hours</b> and <b>30 minutes</b> of <b>Calculus homework</b> that needs to be completed by <b>Friday</b>.</p>
+            <p className="make_text_example">Our algorithm fits your variable events with your fixed events to give you your <b>PERFECT</b> schedule!</p>
+            <p className="make_text_design">Step 3. Press "Generate schedule"</p>
+            <p className="make_text_example">{'  '}With the click of a button, your schedule is immediately generated just for you.</p>
           </div>
-
-          <div className="fixed_events_container">
-            <div className="boxText">
-              <u>Variable Events</u>
+          <div className="new_sub_container_flex">
+            <div className="fixed_events_container">
+              <div className="boxText">
+                <u>Fixed Events</u>
+              </div>
+              {fixedTasks.length > 0 ? (
+                <FixedTasks tasks={fixedTasks} onDelete={deleteFixedTask} />
+              ) : (
+                fixedText
+              )}
             </div>
-            {variableTasks.length > 0 ? (
-              <VariableTasks tasks={variableTasks} onDelete={deleteVariableTask} />
-            ) : (
-              variableText
-            )}
+
+            <div className="fixed_events_container">
+              <div className="boxText">
+                <u>Variable Events</u>
+              </div>
+              {variableTasks.length > 0 ? (
+                <VariableTasks tasks={variableTasks} onDelete={deleteVariableTask} />
+              ) : (
+                variableText
+              )}
+            </div>
           </div>
         </section>
         <section className="new_sub_container">

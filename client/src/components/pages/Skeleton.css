@@ -4,7 +4,7 @@ body {
 
 .home_container {
   background-image: url(https://docs.google.com/drawings/d/e/2PACX-1vQFeJEyoWu36oqhKqfmiCr3quztnKeeOg8QMX126n8GR5pv_gMYqQ7Rn7B7MqEX_5Iw1n3Jl-BhDbjv/pub?w=928&amp;h=434);
-  height: 520px;
+  height: 540px;
   background-position: center;
   background-size: cover;
   border-bottom-left-radius: 8px;
@@ -140,7 +140,7 @@ Source: https://alvaromontoro.com/blog/67836/recreating-the-ipad-commercial-anim
   height: 90vmin;
   left: 50%;
   position: absolute;
-  top: 45%;
+  top: 40%;
   transform: translate(-50%, -50%);
   width: 90vmin;
 }
