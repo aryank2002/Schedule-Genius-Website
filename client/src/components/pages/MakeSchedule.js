@@ -350,7 +350,6 @@ const MakeSchedule = (props) => {
       // If schedule can be generated it will; otherwise, does nothing
     };
 
-    // REALLY INEFFICIENT, roughly 650 * n * n! operations
     // end comment here
 
     // TO DO, SCHEDULE Variable TIME Events
