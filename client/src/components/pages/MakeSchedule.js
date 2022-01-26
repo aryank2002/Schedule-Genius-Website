@@ -168,13 +168,11 @@ const MakeSchedule = (props) => {
       }
     }
 
-    /*
     // PLAY WITH THIS, SEE IF IT MIGHT NEED TWEAKING TO 7 or can be INCREASED to 9 or 10
-    if (variableTasks.length > 8){
+    if (variableTasks.length > 8) {
       alert("Please put only 8 variable-time events or less");
       return;
     }
-    */
 
     console.log(schedName);
     const addSchedule = () => {
@@ -353,6 +351,10 @@ const MakeSchedule = (props) => {
       };
 
       recursive(0);
+      if (made === false) {
+        alert("Sorry, it looks like it isn't possible to schedule your variable-time events");
+        return;
+      }
       // If schedule can be generated it will; otherwise, does nothing
     };
 
