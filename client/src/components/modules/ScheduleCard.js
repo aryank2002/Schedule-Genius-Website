@@ -9,7 +9,6 @@ import { get } from "../../utilities";
 import { post } from "../../utilities";
 
 const ScheduleCard = (props) => {
-  console.log(props.num);
   return (
     <>
       <div className="link-decoration">

@@ -160,7 +160,6 @@ const MakeSchedule = (props) => {
       const e1 = 24 * 4 * dayToNum(elem.dayOfWeek) + 4 * elem.endHour + elem.endMinute / 15;
       for (let i = st1; i < e1; i += 1) {
         if (checkOverlap[i] === true) {
-          console.log("Here");
           alert("Please ensure your fixed events do not overlap");
           return;
         }
@@ -174,13 +173,11 @@ const MakeSchedule = (props) => {
       return;
     }
 
-    console.log(schedName);
     const addSchedule = () => {
       post("/api/addSchedules", { scheduleNum: scheduleNum, date: time, scheduleName: schedName });
     };
     const addFixedEvents = () => {
       for (const elt of fixedTasks) {
-        console.log(elt);
         post("/api/addEvents", {
           startHour: elt.startHour,
           endHour: elt.endHour,
@@ -208,7 +205,6 @@ const MakeSchedule = (props) => {
       for (const elt of fixedTasks) {
         let st = dayToNum(elt.dayOfWeek) * 24 * 4 + elt.startHour * 4 + elt.startMinute / 15;
         let end = dayToNum(elt.dayOfWeek) * 24 * 4 + elt.endHour * 4 + elt.endMinute / 15;
-        console.log(st, end);
 
         for (let ind = st; ind < end; ind += 1) {
           filled[ind] = true;
@@ -288,7 +284,6 @@ const MakeSchedule = (props) => {
               // makes sure ends by that day, midnight
             }
 
-            console.log(timePtr, endT);
             time[elemPtr] = timePtr;
             timePtr = endT;
             elemPtr += 1;
@@ -306,11 +301,8 @@ const MakeSchedule = (props) => {
             "Saturday",
           ];
 
-          console.log(elemPtr);
-          console.log(variableTasks.length);
           if (elemPtr === variableTasks.length) {
             made = true;
-            console.log("DONE");
             for (let j = 0; j < variableTasks.length; j += 1) {
               // TO DO
               let curElem = variableTasks[seq[j]];
